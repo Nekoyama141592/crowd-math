@@ -1,0 +1,75 @@
+name: crowd_math
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.6
+  flutter_flavor: ^3.1.3
+  flutter_flavorizr: ^2.2.3
+  firebase_core: ^2.29.0
+  in_app_purchase: ^3.2.0
+  flutter_dotenv: ^5.1.0
+  get: ^4.6.6
+  firebase_crashlytics: ^3.5.3
+  freezed_annotation: ^2.4.1
+  in_app_purchase_android: ^0.3.4+1
+  in_app_purchase_storekit: ^0.3.14
+  fluttertoast: ^8.2.5
+  flutter_hooks: ^0.20.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^3.0.1
+  flutter_launcher_icons: ^0.13.1
+  build_runner: ^2.3.3
+  freezed: ^2.3.2
+  json_serializable: ^6.6.1
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/university/hokudai/
+    - assets/university/kyoto/
+    - assets/university/kyusyu/
+    - assets/university/nagoya/
+    - assets/university/osaka/
+    - assets/university/tohoku/
+    - assets/university/toko/
+    - assets/university/tokyo/
+    - dev.env
+    - prod.env
+flutter_icons:
+  android: true
+  ios: true
+  image_path: 'assets/images/logo.JPG'
+
+ # Flavorの設定
+flavorizr:
+  app:
+    android:
+      flavorDimensions: "flavor-type"
+  flavors:
+    dev:
+      app:
+        name: "Crowd Math Dev"
+      android:
+        applicationId: "com.firebaseapp.crowd_math_dev"
+      ios:
+        bundleId: "com.firebaseapp.crowdMathDev"
+    prod:
+      app:
+        name: "Crowd Math"
+      android:
+        applicationId: "com.firebaseapp.crowd_math"
+      ios:
+        bundleId: "com.firebaseapp.crowdMath"
