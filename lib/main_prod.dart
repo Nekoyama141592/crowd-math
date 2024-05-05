@@ -8,7 +8,7 @@ import 'flavors.dart';
 import 'main.dart' as runner;
 
 Future<void> main() async {
-   await runZonedGuarded(() async {
+  await runZonedGuarded(() async {
     F.appFlavor = Flavor.prod;
     await dotenv.load(fileName: 'prod.env');
     // Dartのエラーを報告
@@ -16,5 +16,4 @@ Future<void> main() async {
   }, (error, stack) {
     FirebaseCrashlytics.instance.recordError(error, stack);
   });
-  
 }

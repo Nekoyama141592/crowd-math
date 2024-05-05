@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'flavors.dart';
 
 class App extends StatelessWidget {
-
   const App({super.key});
 
   @override
@@ -17,5 +16,4 @@ class App extends StatelessWidget {
       home: const MyHomePage(),
     );
   }
-
 }

@@ -1,12 +1,12 @@
 import 'package:crowd_math/repository/result.dart';
 import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
+
 class PurchaseRepository {
   InAppPurchase get inAppPurchase => InAppPurchase.instance;
 
   FutureResult<bool> consumePurchase(PurchaseDetails purchaseDetails) async {
     try {
-      
       final InAppPurchaseAndroidPlatformAddition androidAddition = inAppPurchase
           .getPlatformAddition<InAppPurchaseAndroidPlatformAddition>();
       await androidAddition.consumePurchase(purchaseDetails);
@@ -41,6 +41,7 @@ class PurchaseRepository {
       return const Result.failure();
     }
   }
+
   FutureResult<bool> restorePurchases() async {
     try {
       await inAppPurchase.restorePurchases();

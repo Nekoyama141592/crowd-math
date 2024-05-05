@@ -9,8 +9,7 @@ ThemeData lightThemeData(BuildContext context) {
     ),
     scaffoldBackgroundColor: Colors.white,
     focusColor: Colors.black,
-    colorScheme: const ColorScheme.light().copyWith(
-        onBackground: kPrimaryColor,
-        inversePrimary: kPrimaryColor),
+    colorScheme: const ColorScheme.light()
+        .copyWith(onBackground: kPrimaryColor, inversePrimary: kPrimaryColor),
   );
 }

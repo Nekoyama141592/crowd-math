@@ -48,4 +48,3 @@ class PurchaseController extends GetxController {
     }
   }
 }
-
