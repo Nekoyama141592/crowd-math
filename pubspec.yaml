@@ -34,20 +34,6 @@ dev_dependencies:
   freezed: ^2.3.2
   json_serializable: ^6.6.1
 
-flutter:
-  uses-material-design: true
-  assets:
-    - assets/images/
-    - assets/university/hokudai/
-    - assets/university/kyoto/
-    - assets/university/kyusyu/
-    - assets/university/nagoya/
-    - assets/university/osaka/
-    - assets/university/tohoku/
-    - assets/university/toko/
-    - assets/university/tokyo/
-    - dev.env
-    - prod.env
 flutter_icons:
   android: true
   ios: true
@@ -73,3 +59,17 @@ flavorizr:
         applicationId: "com.firebaseapp.crowd_math"
       ios:
         bundleId: "com.firebaseapp.crowdMath"
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - dev.env
+    - prod.env
+    - assets/university/hokudai/
+    - assets/university/kyoto/
+    - assets/university/kyushu/
+    - assets/university/nagoya/
+    - assets/university/osaka/
+    - assets/university/tohoku/
+    - assets/university/toko/
+    - assets/university/tokyo/
