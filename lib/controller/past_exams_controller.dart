@@ -1,11 +1,11 @@
 import 'package:crowd_math/constants/enums.dart';
 import 'package:crowd_math/constants/past_exams/hokudai_paths.dart';
-import 'package:crowd_math/constants/past_exams/kyoto.dart';
-import 'package:crowd_math/constants/past_exams/kyushu.dart';
+import 'package:crowd_math/constants/past_exams/kyoto_paths.dart';
+import 'package:crowd_math/constants/past_exams/kyushu_paths.dart';
 import 'package:crowd_math/constants/past_exams/nagoya_paths.dart';
 import 'package:crowd_math/constants/past_exams/osaka_paths.dart';
 import 'package:crowd_math/constants/past_exams/tohoku_paths.dart';
-import 'package:crowd_math/constants/past_exams/toko.dart';
+import 'package:crowd_math/constants/past_exams/toko_paths.dart';
 import 'package:crowd_math/constants/past_exams/tokyo_paths.dart';
 import 'package:get/get.dart';
 
