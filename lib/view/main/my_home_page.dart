@@ -24,8 +24,8 @@ class MyHomePage extends HookWidget {
           onPageChanged: (index) => pageIndex.value = index,
           controller: pageController,
           children: const [
-            UniversityScreen(),
             SizedBox(),
+            UniversityScreen(),
             SizedBox(),
           ],
         ));
