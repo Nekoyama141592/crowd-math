@@ -20,8 +20,9 @@ class PastExamsPage extends StatelessWidget {
           itemCount: paths.length,
           itemBuilder: (context, index) {
             final path = paths[index];
-            // return Image.asset(path);
-            return Text(path);
+            return InteractiveViewer(
+                minScale: 1, maxScale: 7, child: Image.asset(path));
+            // return Text(path);
           },
         ),
       ),
