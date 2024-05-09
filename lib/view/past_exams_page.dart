@@ -4,12 +4,15 @@ import 'package:get/get.dart';
 
 class PastExamsPage extends StatelessWidget {
   const PastExamsPage({super.key});
-  static const path = "/pastExams/:university";
-  static String generatePath(String university) => "/pastExams/$university";
+  static const path = "/pastExams/:university/:year/:isSciences";
+  static String generatePath(String university, int year, bool isSciences) =>
+      "/pastExams/$university/$year/$isSciences";
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(PastExamsController());
-    final paths = controller.getPaths();
+    final intYear = int.parse(Get.parameters['year']!);
+    final isSciences = Get.parameters["isSciences"]! == true.toString();
+    final paths = controller.getPaths(intYear, isSciences);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(),
@@ -17,7 +20,8 @@ class PastExamsPage extends StatelessWidget {
           itemCount: paths.length,
           itemBuilder: (context, index) {
             final path = paths[index];
-            return Image.asset(path);
+            // return Image.asset(path);
+            return Text(path);
           },
         ),
       ),

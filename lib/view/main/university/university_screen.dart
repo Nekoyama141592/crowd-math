@@ -1,4 +1,4 @@
-import 'package:crowd_math/view/past_exams_page.dart';
+import 'package:crowd_math/view/main/year_overview_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +21,7 @@ class UniversityScreen extends StatelessWidget {
           .map((name) => ListTile(
                 title: Text(name),
                 onTap: () {
-                  final path = PastExamsPage.generatePath(name);
+                  final path = YearOverviewPage.generatePath(name);
                   Get.toNamed(path);
                 },
               ))
