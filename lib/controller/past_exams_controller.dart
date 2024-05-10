@@ -10,13 +10,13 @@ import 'package:crowd_math/constants/past_exams/tokyo_paths.dart';
 import 'package:get/get.dart';
 
 class PastExamsController extends GetxController {
-  List<String> getPaths(int year, bool isSciences) {
+  List<Map<String, String>> getPaths(int year, bool isSciences) {
     final param = Get.parameters["university"];
     if (param == null) {
       return [];
     }
     final univerSity = University.values.byName(param);
-    List<String> value = [];
+    List<Map<String, String>> value = [];
     switch (univerSity) {
       case University.hokudai:
         value = hokudaiPaths;
@@ -35,13 +35,11 @@ class PastExamsController extends GetxController {
       case University.tokyo:
         value = tokyoPaths;
     }
-    final result =
-        value.where((element) => element.contains(year.toString())).toList();
-    result.sort();
-    final humanities = result
-        .where((element) =>
-            element.contains("${year}_0") || element.contains("${year}a_0"))
+    final result = value
+        .where((element) => element["title"]!.contains(year.toString()))
         .toList();
+    final humanities =
+        result.where((element) => element["title"]!.contains("文")).toList();
     if (isSciences) {
       final sciences = result
         ..removeWhere((element) => humanities.contains(element));

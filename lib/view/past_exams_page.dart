@@ -19,10 +19,15 @@ class PastExamsPage extends StatelessWidget {
         body: ListView.builder(
           itemCount: paths.length,
           itemBuilder: (context, index) {
-            final path = paths[index];
-            return InteractiveViewer(
-                minScale: 1, maxScale: 7, child: Image.asset(path));
-            // return Text(path);
+            final path = paths[index]["path"]!;
+            final title = paths[index]["title"]!;
+            return Stack(
+              children: [
+                InteractiveViewer(
+                    minScale: 1, maxScale: 7, child: Image.asset(path)),
+                Align(alignment: Alignment.topCenter, child: Text(title))
+              ],
+            );
           },
         ),
       ),
