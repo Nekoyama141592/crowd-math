@@ -17,6 +17,7 @@ class PastExamsPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(),
         body: ListView.builder(
+          scrollDirection: Axis.horizontal,
           itemCount: paths.length,
           itemBuilder: (context, index) {
             final pastExam = paths[index];
@@ -27,12 +28,19 @@ class PastExamsPage extends StatelessWidget {
             if (pastExam.type == "preparation") {
               return Text("$titleは準備中です");
             }
-            return Stack(
-              children: [
-                InteractiveViewer(
-                    minScale: 1, maxScale: 7, child: Image.asset(path)),
-                Align(alignment: Alignment.topCenter, child: Text(showTitle))
-              ],
+            return Container(
+              width: MediaQuery.of(context).size.width,
+              padding: const EdgeInsets.all(24.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(showTitle),
+                    InteractiveViewer(
+                        minScale: 0.1, maxScale: 7, child: Image.asset(path)),
+                  ],
+                ),
+              ),
             );
           },
         ),
