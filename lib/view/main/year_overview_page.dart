@@ -1,3 +1,4 @@
+import 'package:crowd_math/constants/enums.dart';
 import 'package:crowd_math/controller/year_overview_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,25 +16,28 @@ class YearOverviewPage extends StatelessWidget {
         child: Scaffold(
       appBar: AppBar(),
       body: ListView(
-        children: yearsList
-            .map((year) => Column(
-                  children: [
-                    ListTile(
-                        title: Text("$year年文系"),
-                        onTap: () =>
-                            controller.onYearButtonTapped(year, false)),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    ListTile(
-                        title: Text("$year年理系"),
-                        onTap: () => controller.onYearButtonTapped(year, true)),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                  ],
-                ))
-            .toList(),
+        children: yearsList.map((year) {
+          final isNotToko =
+              Get.parameters["university"] != University.toko.name;
+          return Column(
+            children: [
+              if (isNotToko)
+                ListTile(
+                    title: Text("$year年文系"),
+                    onTap: () => controller.onYearButtonTapped(year, false)),
+              if (isNotToko)
+                const SizedBox(
+                  height: 20.0,
+                ),
+              ListTile(
+                  title: Text("$year年理系"),
+                  onTap: () => controller.onYearButtonTapped(year, true)),
+              const SizedBox(
+                height: 20.0,
+              ),
+            ],
+          );
+        }).toList(),
       ),
     ));
   }
