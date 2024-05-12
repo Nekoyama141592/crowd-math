@@ -7,10 +7,11 @@ import 'package:crowd_math/constants/past_exams/osaka_paths.dart';
 import 'package:crowd_math/constants/past_exams/tohoku_paths.dart';
 import 'package:crowd_math/constants/past_exams/toko_paths.dart';
 import 'package:crowd_math/constants/past_exams/tokyo_paths.dart';
+import 'package:crowd_math/model/past_exam/past_exam.dart';
 import 'package:get/get.dart';
 
 class PastExamsController extends GetxController {
-  List<Map<String, String>> getPaths(int year, bool isSciences) {
+  List<PastExam> getPaths(int year, bool isSciences) {
     final param = Get.parameters["university"];
     if (param == null) {
       return [];
@@ -43,9 +44,9 @@ class PastExamsController extends GetxController {
     if (isSciences) {
       final sciences = result
         ..removeWhere((element) => humanities.contains(element));
-      return sciences;
+      return sciences.map((e) => PastExam.fromJson(e)).toList();
     } else {
-      return humanities;
+      return humanities.map((e) => PastExam.fromJson(e)).toList();
     }
   }
 }

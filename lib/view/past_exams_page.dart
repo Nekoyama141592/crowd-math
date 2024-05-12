@@ -19,8 +19,12 @@ class PastExamsPage extends StatelessWidget {
         body: ListView.builder(
           itemCount: paths.length,
           itemBuilder: (context, index) {
-            final path = paths[index]["path"]!;
-            final title = paths[index]["title"]!;
+            final pastExam = paths[index];
+            final path = pastExam.path;
+            final title = pastExam.title;
+            if (pastExam.type == "preparation") {
+              return Text("$titleは準備中です");
+            }
             return Stack(
               children: [
                 InteractiveViewer(
