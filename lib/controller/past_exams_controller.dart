@@ -36,17 +36,18 @@ class PastExamsController extends GetxController {
       case University.tokyo:
         value = tokyoPaths;
     }
-    final result = value
-        .where((element) => element["title"]!.contains(year.toString()))
+    final typedValue = value.map((e) => PastExam.fromJson(e)).toList();
+    final result = typedValue
+        .where((element) => element.title.contains(year.toString()))
         .toList();
     final humanities =
-        result.where((element) => element["title"]!.contains("文")).toList();
+        result.where((element) => element.title.contains("文")).toList();
     if (isSciences) {
       final sciences = result
         ..removeWhere((element) => humanities.contains(element));
-      return sciences.map((e) => PastExam.fromJson(e)).toList();
+      return sciences;
     } else {
-      return humanities.map((e) => PastExam.fromJson(e)).toList();
+      return humanities;
     }
   }
 }
