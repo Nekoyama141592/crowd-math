@@ -22,6 +22,8 @@ class PastExamsPage extends StatelessWidget {
             final pastExam = paths[index];
             final path = pastExam.path;
             final title = pastExam.title;
+            final showTitle =
+                pastExam.type == "selectable" ? "$title(どちらかを選択)" : title;
             if (pastExam.type == "preparation") {
               return Text("$titleは準備中です");
             }
@@ -29,7 +31,7 @@ class PastExamsPage extends StatelessWidget {
               children: [
                 InteractiveViewer(
                     minScale: 1, maxScale: 7, child: Image.asset(path)),
-                Align(alignment: Alignment.topCenter, child: Text(title))
+                Align(alignment: Alignment.topCenter, child: Text(showTitle))
               ],
             );
           },
