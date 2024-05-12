@@ -16,9 +16,23 @@ class YearOverviewPage extends StatelessWidget {
       appBar: AppBar(),
       body: ListView(
         children: yearsList
-            .map((year) => ListTile(
-                title: Text("$year年"),
-                onTap: () => controller.onYearButtonTapped(context, year)))
+            .map((year) => Column(
+                  children: [
+                    ListTile(
+                        title: Text("$year年文系"),
+                        onTap: () =>
+                            controller.onYearButtonTapped(year, false)),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    ListTile(
+                        title: Text("$year年理系"),
+                        onTap: () => controller.onYearButtonTapped(year, true)),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                  ],
+                ))
             .toList(),
       ),
     ));
