@@ -8,9 +8,14 @@ final List<BottomNavigationBarItem> bnbItems = [
         Icons.home,
       )),
   const BottomNavigationBarItem(
-      label: '問題',
+      label: 'センター',
       icon: Icon(
         Icons.question_mark,
+      )),
+  const BottomNavigationBarItem(
+      label: '2次試験',
+      icon: Icon(
+        Icons.school,
       )),
   const BottomNavigationBarItem(
       label: '設定',

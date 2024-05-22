@@ -12,6 +12,8 @@ migrate_working_dir/
 lib/gen/
 *.env
 assets/university/
+assets/center_exams/
+lib/constants/center_exam_paths.dart
 # IntelliJ related
 *.iml
 *.ipr

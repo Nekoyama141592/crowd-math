@@ -1,4 +1,4 @@
-import 'package:crowd_math/view/main/year_overview_page.dart';
+import 'package:crowd_math/view/main/university/year_overview_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

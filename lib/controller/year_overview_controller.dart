@@ -1,4 +1,4 @@
-import 'package:crowd_math/view/past_exams_page.dart';
+import 'package:crowd_math/view/main/university/past_exams_page.dart';
 import 'package:get/get.dart';
 
 class YearOverviewController extends GetxController {

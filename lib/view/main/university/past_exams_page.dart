@@ -15,7 +15,9 @@ class PastExamsPage extends StatelessWidget {
     final paths = controller.getPaths(intYear, isSciences);
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: const Text("(解答未作成)"),
+        ),
         body: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: paths.length,

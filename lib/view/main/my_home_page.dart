@@ -1,4 +1,5 @@
 import 'package:crowd_math/app/bottom_navigation_bar_items.dart';
+import 'package:crowd_math/view/main/center_exam/center_exam_years_screen.dart';
 import 'package:crowd_math/view/main/university/university_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -25,6 +26,7 @@ class MyHomePage extends HookWidget {
           controller: pageController,
           children: const [
             SizedBox(),
+            CenterExamYearsScreen(),
             UniversityScreen(),
             SizedBox(),
           ],
