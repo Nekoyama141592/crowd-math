@@ -30,6 +30,7 @@ class CenterExamPage extends HookWidget {
         child: Obx(() {
           final paths = controller.rxPaths;
           return ListView(
+            scrollDirection: Axis.horizontal,
             children: paths.map((e) {
               return Container(
                 width: MediaQuery.of(context).size.width,
