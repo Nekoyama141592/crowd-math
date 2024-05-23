@@ -8,7 +8,7 @@ final List<BottomNavigationBarItem> bnbItems = [
         Icons.home,
       )),
   const BottomNavigationBarItem(
-      label: 'センター',
+      label: 'センター/共テ',
       icon: Icon(
         Icons.question_mark,
       )),

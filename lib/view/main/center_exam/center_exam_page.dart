@@ -1,3 +1,4 @@
+import 'package:crowd_math/constants/center_exam/center_exam_subject_constant.dart';
 import 'package:crowd_math/controller/center_exam_controller.dart';
 import 'package:crowd_math/view/components/basic_page.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +20,12 @@ class CenterExamPage extends HookWidget {
       controller.init(year, subject);
       return;
     }, []);
+    final subjectName = CenterExamSubjectConstant.all
+        .firstWhere((e) => e.subject == subject)
+        .subjectName;
     return BasicPage(
         appBar: AppBar(
-          title: Text("$year年 $subject"),
+          title: Text("$year年 $subjectName"),
         ),
         child: Obx(() {
           final paths = controller.rxPaths;
