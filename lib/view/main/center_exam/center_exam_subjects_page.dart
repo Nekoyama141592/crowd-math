@@ -1,4 +1,5 @@
 import 'package:crowd_math/controller/center_exam_subjects_controller.dart';
+import 'package:crowd_math/core/center_or_kyotsu.dart';
 import 'package:crowd_math/view/components/basic_page.dart';
 import 'package:crowd_math/view/main/center_exam/center_exam_page.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class CenterExamSubjectsPage extends HookWidget {
     }, []);
     return BasicPage(
         appBar: AppBar(
-          title: Text("センター${paramYear ?? ""}"),
+          title: Text("${CenterOrKyotsu.text(paramYear)} ${paramYear ?? ""}"),
         ),
         child: Obx(() {
           final subjects = controller.rxSubjects;
