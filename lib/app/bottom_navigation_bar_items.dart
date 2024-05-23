@@ -13,7 +13,7 @@ final List<BottomNavigationBarItem> bnbItems = [
         Icons.question_mark,
       )),
   const BottomNavigationBarItem(
-      label: '2次試験',
+      label: '2次数学',
       icon: Icon(
         Icons.school,
       )),
