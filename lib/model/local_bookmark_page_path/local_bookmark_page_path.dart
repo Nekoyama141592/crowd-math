@@ -9,6 +9,7 @@ abstract class LocalBookmarkPagePath implements _$LocalBookmarkPagePath {
   const LocalBookmarkPagePath._();
   const factory LocalBookmarkPagePath({
     required DateTime createdAt,
+    @Default("") String memo,
     required String pagePath,
   }) = _LocalBookmarkPagePath;
   factory LocalBookmarkPagePath.fromJson(Map<String, dynamic> json) =>

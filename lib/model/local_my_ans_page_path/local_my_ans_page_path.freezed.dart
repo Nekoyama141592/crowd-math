@@ -21,6 +21,7 @@ LocalMyAnsPagePath _$LocalMyAnsPagePathFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$LocalMyAnsPagePath {
   DateTime get createdAt => throw _privateConstructorUsedError;
+  String get memo => throw _privateConstructorUsedError;
   String get pagePath => throw _privateConstructorUsedError;
   String get imageID => throw _privateConstructorUsedError;
 
@@ -36,7 +37,7 @@ abstract class $LocalMyAnsPagePathCopyWith<$Res> {
           LocalMyAnsPagePath value, $Res Function(LocalMyAnsPagePath) then) =
       _$LocalMyAnsPagePathCopyWithImpl<$Res, LocalMyAnsPagePath>;
   @useResult
-  $Res call({DateTime createdAt, String pagePath, String imageID});
+  $Res call({DateTime createdAt, String memo, String pagePath, String imageID});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$LocalMyAnsPagePathCopyWithImpl<$Res, $Val extends LocalMyAnsPagePath>
   @override
   $Res call({
     Object? createdAt = null,
+    Object? memo = null,
     Object? pagePath = null,
     Object? imageID = null,
   }) {
@@ -61,6 +63,10 @@ class _$LocalMyAnsPagePathCopyWithImpl<$Res, $Val extends LocalMyAnsPagePath>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      memo: null == memo
+          ? _value.memo
+          : memo // ignore: cast_nullable_to_non_nullable
+              as String,
       pagePath: null == pagePath
           ? _value.pagePath
           : pagePath // ignore: cast_nullable_to_non_nullable
@@ -81,7 +87,7 @@ abstract class _$$LocalMyAnsPagePathImplCopyWith<$Res>
       __$$LocalMyAnsPagePathImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DateTime createdAt, String pagePath, String imageID});
+  $Res call({DateTime createdAt, String memo, String pagePath, String imageID});
 }
 
 /// @nodoc
@@ -96,6 +102,7 @@ class __$$LocalMyAnsPagePathImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? createdAt = null,
+    Object? memo = null,
     Object? pagePath = null,
     Object? imageID = null,
   }) {
@@ -104,6 +111,10 @@ class __$$LocalMyAnsPagePathImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      memo: null == memo
+          ? _value.memo
+          : memo // ignore: cast_nullable_to_non_nullable
+              as String,
       pagePath: null == pagePath
           ? _value.pagePath
           : pagePath // ignore: cast_nullable_to_non_nullable
@@ -120,7 +131,10 @@ class __$$LocalMyAnsPagePathImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$LocalMyAnsPagePathImpl extends _LocalMyAnsPagePath {
   const _$LocalMyAnsPagePathImpl(
-      {required this.createdAt, required this.pagePath, required this.imageID})
+      {required this.createdAt,
+      this.memo = "",
+      required this.pagePath,
+      required this.imageID})
       : super._();
 
   factory _$LocalMyAnsPagePathImpl.fromJson(Map<String, dynamic> json) =>
@@ -129,13 +143,16 @@ class _$LocalMyAnsPagePathImpl extends _LocalMyAnsPagePath {
   @override
   final DateTime createdAt;
   @override
+  @JsonKey()
+  final String memo;
+  @override
   final String pagePath;
   @override
   final String imageID;
 
   @override
   String toString() {
-    return 'LocalMyAnsPagePath(createdAt: $createdAt, pagePath: $pagePath, imageID: $imageID)';
+    return 'LocalMyAnsPagePath(createdAt: $createdAt, memo: $memo, pagePath: $pagePath, imageID: $imageID)';
   }
 
   @override
@@ -145,6 +162,7 @@ class _$LocalMyAnsPagePathImpl extends _LocalMyAnsPagePath {
             other is _$LocalMyAnsPagePathImpl &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
+            (identical(other.memo, memo) || other.memo == memo) &&
             (identical(other.pagePath, pagePath) ||
                 other.pagePath == pagePath) &&
             (identical(other.imageID, imageID) || other.imageID == imageID));
@@ -152,7 +170,8 @@ class _$LocalMyAnsPagePathImpl extends _LocalMyAnsPagePath {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, createdAt, pagePath, imageID);
+  int get hashCode =>
+      Object.hash(runtimeType, createdAt, memo, pagePath, imageID);
 
   @JsonKey(ignore: true)
   @override
@@ -172,6 +191,7 @@ class _$LocalMyAnsPagePathImpl extends _LocalMyAnsPagePath {
 abstract class _LocalMyAnsPagePath extends LocalMyAnsPagePath {
   const factory _LocalMyAnsPagePath(
       {required final DateTime createdAt,
+      final String memo,
       required final String pagePath,
       required final String imageID}) = _$LocalMyAnsPagePathImpl;
   const _LocalMyAnsPagePath._() : super._();
@@ -181,6 +201,8 @@ abstract class _LocalMyAnsPagePath extends LocalMyAnsPagePath {
 
   @override
   DateTime get createdAt;
+  @override
+  String get memo;
   @override
   String get pagePath;
   @override

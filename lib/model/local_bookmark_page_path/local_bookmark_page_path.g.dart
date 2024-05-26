@@ -10,6 +10,7 @@ _$LocalBookmarkPagePathImpl _$$LocalBookmarkPagePathImplFromJson(
         Map<String, dynamic> json) =>
     _$LocalBookmarkPagePathImpl(
       createdAt: DateTime.parse(json['createdAt'] as String),
+      memo: json['memo'] as String? ?? "",
       pagePath: json['pagePath'] as String,
     );
 
@@ -17,5 +18,6 @@ Map<String, dynamic> _$$LocalBookmarkPagePathImplToJson(
         _$LocalBookmarkPagePathImpl instance) =>
     <String, dynamic>{
       'createdAt': instance.createdAt.toIso8601String(),
+      'memo': instance.memo,
       'pagePath': instance.pagePath,
     };

@@ -22,6 +22,7 @@ LocalBookmarkPagePath _$LocalBookmarkPagePathFromJson(
 /// @nodoc
 mixin _$LocalBookmarkPagePath {
   DateTime get createdAt => throw _privateConstructorUsedError;
+  String get memo => throw _privateConstructorUsedError;
   String get pagePath => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +37,7 @@ abstract class $LocalBookmarkPagePathCopyWith<$Res> {
           $Res Function(LocalBookmarkPagePath) then) =
       _$LocalBookmarkPagePathCopyWithImpl<$Res, LocalBookmarkPagePath>;
   @useResult
-  $Res call({DateTime createdAt, String pagePath});
+  $Res call({DateTime createdAt, String memo, String pagePath});
 }
 
 /// @nodoc
@@ -54,6 +55,7 @@ class _$LocalBookmarkPagePathCopyWithImpl<$Res,
   @override
   $Res call({
     Object? createdAt = null,
+    Object? memo = null,
     Object? pagePath = null,
   }) {
     return _then(_value.copyWith(
@@ -61,6 +63,10 @@ class _$LocalBookmarkPagePathCopyWithImpl<$Res,
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      memo: null == memo
+          ? _value.memo
+          : memo // ignore: cast_nullable_to_non_nullable
+              as String,
       pagePath: null == pagePath
           ? _value.pagePath
           : pagePath // ignore: cast_nullable_to_non_nullable
@@ -78,7 +84,7 @@ abstract class _$$LocalBookmarkPagePathImplCopyWith<$Res>
       __$$LocalBookmarkPagePathImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DateTime createdAt, String pagePath});
+  $Res call({DateTime createdAt, String memo, String pagePath});
 }
 
 /// @nodoc
@@ -94,6 +100,7 @@ class __$$LocalBookmarkPagePathImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? createdAt = null,
+    Object? memo = null,
     Object? pagePath = null,
   }) {
     return _then(_$LocalBookmarkPagePathImpl(
@@ -101,6 +108,10 @@ class __$$LocalBookmarkPagePathImplCopyWithImpl<$Res>
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      memo: null == memo
+          ? _value.memo
+          : memo // ignore: cast_nullable_to_non_nullable
+              as String,
       pagePath: null == pagePath
           ? _value.pagePath
           : pagePath // ignore: cast_nullable_to_non_nullable
@@ -113,7 +124,7 @@ class __$$LocalBookmarkPagePathImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$LocalBookmarkPagePathImpl extends _LocalBookmarkPagePath {
   const _$LocalBookmarkPagePathImpl(
-      {required this.createdAt, required this.pagePath})
+      {required this.createdAt, this.memo = "", required this.pagePath})
       : super._();
 
   factory _$LocalBookmarkPagePathImpl.fromJson(Map<String, dynamic> json) =>
@@ -122,11 +133,14 @@ class _$LocalBookmarkPagePathImpl extends _LocalBookmarkPagePath {
   @override
   final DateTime createdAt;
   @override
+  @JsonKey()
+  final String memo;
+  @override
   final String pagePath;
 
   @override
   String toString() {
-    return 'LocalBookmarkPagePath(createdAt: $createdAt, pagePath: $pagePath)';
+    return 'LocalBookmarkPagePath(createdAt: $createdAt, memo: $memo, pagePath: $pagePath)';
   }
 
   @override
@@ -136,13 +150,14 @@ class _$LocalBookmarkPagePathImpl extends _LocalBookmarkPagePath {
             other is _$LocalBookmarkPagePathImpl &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
+            (identical(other.memo, memo) || other.memo == memo) &&
             (identical(other.pagePath, pagePath) ||
                 other.pagePath == pagePath));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, createdAt, pagePath);
+  int get hashCode => Object.hash(runtimeType, createdAt, memo, pagePath);
 
   @JsonKey(ignore: true)
   @override
@@ -162,6 +177,7 @@ class _$LocalBookmarkPagePathImpl extends _LocalBookmarkPagePath {
 abstract class _LocalBookmarkPagePath extends LocalBookmarkPagePath {
   const factory _LocalBookmarkPagePath(
       {required final DateTime createdAt,
+      final String memo,
       required final String pagePath}) = _$LocalBookmarkPagePathImpl;
   const _LocalBookmarkPagePath._() : super._();
 
@@ -170,6 +186,8 @@ abstract class _LocalBookmarkPagePath extends LocalBookmarkPagePath {
 
   @override
   DateTime get createdAt;
+  @override
+  String get memo;
   @override
   String get pagePath;
   @override

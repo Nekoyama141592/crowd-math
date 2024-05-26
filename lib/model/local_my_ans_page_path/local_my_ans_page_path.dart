@@ -9,6 +9,7 @@ abstract class LocalMyAnsPagePath implements _$LocalMyAnsPagePath {
   const LocalMyAnsPagePath._();
   const factory LocalMyAnsPagePath(
       {required DateTime createdAt,
+      @Default("") String memo,
       required String pagePath,
       required String imageID}) = _LocalMyAnsPagePath;
   factory LocalMyAnsPagePath.fromJson(Map<String, dynamic> json) =>
