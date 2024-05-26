@@ -1,0 +1,3 @@
+${ans_image_id}: 自分の答案画像
+my_ans_page_paths: 答案を保存したページのJsonの配列
+bookmark_page_paths: ブックマークしたページのJsonの配列

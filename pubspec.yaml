@@ -23,6 +23,7 @@ dependencies:
   in_app_purchase_storekit: ^0.3.14
   fluttertoast: ^8.2.5
   flutter_hooks: ^0.20.5
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:
