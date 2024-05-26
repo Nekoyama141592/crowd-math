@@ -1,5 +1,6 @@
 import 'package:crowd_math/constants/enums.dart';
 import 'package:crowd_math/controller/year_overview_controller.dart';
+import 'package:crowd_math/core/page_titile_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,15 +11,17 @@ class YearOverviewPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(YearOverviewController());
+    final university = Get.parameters["university"]!;
     final yearsList =
         List<int>.generate(2024 - 1961 + 1, (index) => 2024 - index);
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(PageTitleCore.getUniversityName(university)),
+      ),
       body: ListView(
         children: yearsList.map((year) {
-          final isNotToko =
-              Get.parameters["university"] != University.toko.name;
+          final isNotToko = university != University.toko.name;
           return Column(
             children: [
               if (isNotToko)

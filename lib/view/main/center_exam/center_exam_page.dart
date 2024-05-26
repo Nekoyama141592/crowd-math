@@ -1,6 +1,5 @@
-import 'package:crowd_math/constants/center_exam/center_exam_subject_constant.dart';
 import 'package:crowd_math/controller/center_exam_controller.dart';
-import 'package:crowd_math/core/center_or_kyotsu.dart';
+import 'package:crowd_math/core/page_titile_core.dart';
 import 'package:crowd_math/view/components/basic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -21,12 +20,9 @@ class CenterExamPage extends HookWidget {
       controller.init(year, subject);
       return;
     }, []);
-    final subjectName = CenterExamSubjectConstant.all
-        .firstWhere((e) => e.subject == subject)
-        .subjectName;
     return BasicPage(
         appBar: AppBar(
-          title: Text("$year年 ${CenterOrKyotsu.text(year)} $subjectName"),
+          title: Text(PageTitleCore.pageTitleFromPagePath(Get.currentRoute)),
         ),
         child: Obx(() {
           final paths = controller.rxPaths;

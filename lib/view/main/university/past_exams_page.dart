@@ -1,4 +1,5 @@
 import 'package:crowd_math/controller/past_exams_controller.dart';
+import 'package:crowd_math/core/page_titile_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +17,7 @@ class PastExamsPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text("(解答未作成)"),
+          title: Text(PageTitleCore.pageTitleFromPagePath(Get.currentRoute)),
         ),
         body: ListView.builder(
           scrollDirection: Axis.horizontal,
