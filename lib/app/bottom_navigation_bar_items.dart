@@ -17,9 +17,4 @@ final List<BottomNavigationBarItem> bnbItems = [
       icon: Icon(
         Icons.school,
       )),
-  const BottomNavigationBarItem(
-      label: '設定',
-      icon: Icon(
-        Icons.settings,
-      )),
 ];

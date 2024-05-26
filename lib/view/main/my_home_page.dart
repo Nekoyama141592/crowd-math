@@ -32,7 +32,6 @@ class MyHomePage extends HookWidget {
             HomeScreen(),
             CenterExamYearsScreen(),
             UniversityScreen(),
-            SizedBox(),
           ],
         ));
   }
