@@ -6,6 +6,7 @@ part 'local_my_ans_page_path.g.dart';
 
 @freezed
 abstract class LocalMyAnsPagePath implements _$LocalMyAnsPagePath {
+  const LocalMyAnsPagePath._();
   const factory LocalMyAnsPagePath(
       {required DateTime createdAt,
       required String pagePath,

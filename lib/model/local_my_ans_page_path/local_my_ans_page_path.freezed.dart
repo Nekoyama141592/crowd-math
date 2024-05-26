@@ -118,9 +118,10 @@ class __$$LocalMyAnsPagePathImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$LocalMyAnsPagePathImpl implements _LocalMyAnsPagePath {
+class _$LocalMyAnsPagePathImpl extends _LocalMyAnsPagePath {
   const _$LocalMyAnsPagePathImpl(
-      {required this.createdAt, required this.pagePath, required this.imageID});
+      {required this.createdAt, required this.pagePath, required this.imageID})
+      : super._();
 
   factory _$LocalMyAnsPagePathImpl.fromJson(Map<String, dynamic> json) =>
       _$$LocalMyAnsPagePathImplFromJson(json);
@@ -168,11 +169,12 @@ class _$LocalMyAnsPagePathImpl implements _LocalMyAnsPagePath {
   }
 }
 
-abstract class _LocalMyAnsPagePath implements LocalMyAnsPagePath {
+abstract class _LocalMyAnsPagePath extends LocalMyAnsPagePath {
   const factory _LocalMyAnsPagePath(
       {required final DateTime createdAt,
       required final String pagePath,
       required final String imageID}) = _$LocalMyAnsPagePathImpl;
+  const _LocalMyAnsPagePath._() : super._();
 
   factory _LocalMyAnsPagePath.fromJson(Map<String, dynamic> json) =
       _$LocalMyAnsPagePathImpl.fromJson;

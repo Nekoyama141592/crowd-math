@@ -6,6 +6,7 @@ part 'local_bookmark_page_path.g.dart';
 
 @freezed
 abstract class LocalBookmarkPagePath implements _$LocalBookmarkPagePath {
+  const LocalBookmarkPagePath._();
   const factory LocalBookmarkPagePath({
     required DateTime createdAt,
     required String pagePath,

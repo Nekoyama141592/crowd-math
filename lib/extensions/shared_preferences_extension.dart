@@ -17,7 +17,8 @@ extension SharedPreferencesExtension on SharedPreferences {
     if (jsonString == null) {
       return null;
     }
-    final result = json.decode(jsonString) as List<Map<String, dynamic>>;
+    final dynamics = json.decode(jsonString) as List<dynamic>;
+    final result = dynamics.map((e) => e as Map<String, dynamic>).toList();
     return result;
   }
 

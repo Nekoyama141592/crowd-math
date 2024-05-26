@@ -24,6 +24,10 @@ class CenterExamPage extends HookWidget {
         appBar: AppBar(
           title: Text(PageTitleCore.pageTitleFromPagePath(Get.currentRoute)),
         ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => controller.bookmark(Get.currentRoute),
+          child: const Icon(Icons.bookmark),
+        ),
         child: Obx(() {
           final paths = controller.rxPaths;
           return ListView(

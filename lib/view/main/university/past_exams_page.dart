@@ -23,6 +23,10 @@ class PastExamsPage extends HookWidget {
           appBar: AppBar(
             title: Text(PageTitleCore.pageTitleFromPagePath(Get.currentRoute)),
           ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () => controller.bookmark(Get.currentRoute),
+            child: const Icon(Icons.bookmark),
+          ),
           body: Obx(() {
             final pastExams = controller.rxPastExams;
             return ListView.builder(

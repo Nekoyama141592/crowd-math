@@ -7,10 +7,11 @@ import 'package:crowd_math/constants/past_exams/osaka_paths.dart';
 import 'package:crowd_math/constants/past_exams/tohoku_paths.dart';
 import 'package:crowd_math/constants/past_exams/toko_paths.dart';
 import 'package:crowd_math/constants/past_exams/tokyo_paths.dart';
+import 'package:crowd_math/controller/abstract/exam_controller.dart';
 import 'package:crowd_math/model/past_exam/past_exam.dart';
 import 'package:get/get.dart';
 
-class PastExamsController extends GetxController {
+class PastExamsController extends ExamController {
   final rxPastExams = <PastExam>[].obs;
   void init(int year, bool isSciences) {
     rxPastExams.value = getPaths(year, isSciences);

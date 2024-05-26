@@ -111,9 +111,10 @@ class __$$LocalBookmarkPagePathImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$LocalBookmarkPagePathImpl implements _LocalBookmarkPagePath {
+class _$LocalBookmarkPagePathImpl extends _LocalBookmarkPagePath {
   const _$LocalBookmarkPagePathImpl(
-      {required this.createdAt, required this.pagePath});
+      {required this.createdAt, required this.pagePath})
+      : super._();
 
   factory _$LocalBookmarkPagePathImpl.fromJson(Map<String, dynamic> json) =>
       _$$LocalBookmarkPagePathImplFromJson(json);
@@ -158,10 +159,11 @@ class _$LocalBookmarkPagePathImpl implements _LocalBookmarkPagePath {
   }
 }
 
-abstract class _LocalBookmarkPagePath implements LocalBookmarkPagePath {
+abstract class _LocalBookmarkPagePath extends LocalBookmarkPagePath {
   const factory _LocalBookmarkPagePath(
       {required final DateTime createdAt,
       required final String pagePath}) = _$LocalBookmarkPagePathImpl;
+  const _LocalBookmarkPagePath._() : super._();
 
   factory _LocalBookmarkPagePath.fromJson(Map<String, dynamic> json) =
       _$LocalBookmarkPagePathImpl.fromJson;
