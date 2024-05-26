@@ -11,6 +11,15 @@ import 'package:crowd_math/model/past_exam/past_exam.dart';
 import 'package:get/get.dart';
 
 class PastExamsController extends GetxController {
+  final rxPastExams = <PastExam>[].obs;
+  void init(int year, bool isSciences) {
+    rxPastExams.value = getPaths(year, isSciences);
+  }
+
+  void close() {
+    rxPastExams.value = [];
+  }
+
   List<PastExam> getPaths(int year, bool isSciences) {
     final param = Get.parameters["university"];
     if (param == null) {
