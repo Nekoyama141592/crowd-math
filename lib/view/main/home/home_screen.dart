@@ -30,7 +30,28 @@ class HomeScreen extends StatelessWidget {
                     .toList(),
               );
             }),
-          )
+          ),
+          const Text("自分の回答"),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.3,
+            child: Obx(() {
+              final myAnswers = controller.rxMyAnswers;
+              return ListView(
+                children: myAnswers
+                    .map((myAnswer) => ListTile(
+                          title: Text(myAnswer.pageTitle),
+                          subtitle: Text(myAnswer.createdAt.toString()),
+                          onTap: () => Get.toNamed(myAnswer.pagePath),
+                          trailing: InkWell(
+                            onTap: () => controller
+                                .onRemoveImageButtonPressed(myAnswer.imageID),
+                            child: const Icon(Icons.delete),
+                          ),
+                        ))
+                    .toList(),
+              );
+            }),
+          ),
         ],
       ),
     );

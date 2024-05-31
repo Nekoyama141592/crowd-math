@@ -1,3 +1,3 @@
 enum University { hokudai, kyoto, kyushu, nagoya, osaka, tohoku, toko, tokyo }
 
-enum PrefsKey { bookmarkPagePaths }
+enum PrefsKey { bookmarkPagePaths, myAnsPagePaths }
