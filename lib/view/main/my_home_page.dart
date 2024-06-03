@@ -30,7 +30,7 @@ class MyHomePage extends HookWidget {
           children: const [
             HomeScreen(),
             CenterExamYearsScreen(),
-            SizedBox(),// UniversityScreen
+            SizedBox(), // UniversityScreen
           ],
         ));
   }

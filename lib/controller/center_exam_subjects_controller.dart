@@ -20,6 +20,10 @@ class CenterExamSubjectsController extends GetxController {
     } else if (intYear == 2024) {
       subjects = CenterExamSubjectConstant.subject2024;
     }
-    rxSubjects.value = subjects;
+    // 数学の解答はまだ用意していない
+    final results = subjects
+        .where((element) => !element.subjectName.contains("数学"))
+        .toList();
+    rxSubjects.value = results;
   }
 }
