@@ -21,6 +21,7 @@ AnswerChunk _$AnswerChunkFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AnswerChunk {
   int get point => throw _privateConstructorUsedError;
+  List<int> get questionIndexes => throw _privateConstructorUsedError;
   List<String> get myAnswers => throw _privateConstructorUsedError;
   List<String> get correctAnswers => throw _privateConstructorUsedError;
 
@@ -36,7 +37,11 @@ abstract class $AnswerChunkCopyWith<$Res> {
           AnswerChunk value, $Res Function(AnswerChunk) then) =
       _$AnswerChunkCopyWithImpl<$Res, AnswerChunk>;
   @useResult
-  $Res call({int point, List<String> myAnswers, List<String> correctAnswers});
+  $Res call(
+      {int point,
+      List<int> questionIndexes,
+      List<String> myAnswers,
+      List<String> correctAnswers});
 }
 
 /// @nodoc
@@ -53,6 +58,7 @@ class _$AnswerChunkCopyWithImpl<$Res, $Val extends AnswerChunk>
   @override
   $Res call({
     Object? point = null,
+    Object? questionIndexes = null,
     Object? myAnswers = null,
     Object? correctAnswers = null,
   }) {
@@ -61,6 +67,10 @@ class _$AnswerChunkCopyWithImpl<$Res, $Val extends AnswerChunk>
           ? _value.point
           : point // ignore: cast_nullable_to_non_nullable
               as int,
+      questionIndexes: null == questionIndexes
+          ? _value.questionIndexes
+          : questionIndexes // ignore: cast_nullable_to_non_nullable
+              as List<int>,
       myAnswers: null == myAnswers
           ? _value.myAnswers
           : myAnswers // ignore: cast_nullable_to_non_nullable
@@ -81,7 +91,11 @@ abstract class _$$AnswerChunkImplCopyWith<$Res>
       __$$AnswerChunkImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int point, List<String> myAnswers, List<String> correctAnswers});
+  $Res call(
+      {int point,
+      List<int> questionIndexes,
+      List<String> myAnswers,
+      List<String> correctAnswers});
 }
 
 /// @nodoc
@@ -96,6 +110,7 @@ class __$$AnswerChunkImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? point = null,
+    Object? questionIndexes = null,
     Object? myAnswers = null,
     Object? correctAnswers = null,
   }) {
@@ -104,6 +119,10 @@ class __$$AnswerChunkImplCopyWithImpl<$Res>
           ? _value.point
           : point // ignore: cast_nullable_to_non_nullable
               as int,
+      questionIndexes: null == questionIndexes
+          ? _value._questionIndexes
+          : questionIndexes // ignore: cast_nullable_to_non_nullable
+              as List<int>,
       myAnswers: null == myAnswers
           ? _value._myAnswers
           : myAnswers // ignore: cast_nullable_to_non_nullable
@@ -121,9 +140,11 @@ class __$$AnswerChunkImplCopyWithImpl<$Res>
 class _$AnswerChunkImpl extends _AnswerChunk {
   const _$AnswerChunkImpl(
       {required this.point,
+      required final List<int> questionIndexes,
       required final List<String> myAnswers,
       required final List<String> correctAnswers})
-      : _myAnswers = myAnswers,
+      : _questionIndexes = questionIndexes,
+        _myAnswers = myAnswers,
         _correctAnswers = correctAnswers,
         super._();
 
@@ -132,6 +153,14 @@ class _$AnswerChunkImpl extends _AnswerChunk {
 
   @override
   final int point;
+  final List<int> _questionIndexes;
+  @override
+  List<int> get questionIndexes {
+    if (_questionIndexes is EqualUnmodifiableListView) return _questionIndexes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_questionIndexes);
+  }
+
   final List<String> _myAnswers;
   @override
   List<String> get myAnswers {
@@ -150,7 +179,7 @@ class _$AnswerChunkImpl extends _AnswerChunk {
 
   @override
   String toString() {
-    return 'AnswerChunk(point: $point, myAnswers: $myAnswers, correctAnswers: $correctAnswers)';
+    return 'AnswerChunk(point: $point, questionIndexes: $questionIndexes, myAnswers: $myAnswers, correctAnswers: $correctAnswers)';
   }
 
   @override
@@ -159,6 +188,8 @@ class _$AnswerChunkImpl extends _AnswerChunk {
         (other.runtimeType == runtimeType &&
             other is _$AnswerChunkImpl &&
             (identical(other.point, point) || other.point == point) &&
+            const DeepCollectionEquality()
+                .equals(other._questionIndexes, _questionIndexes) &&
             const DeepCollectionEquality()
                 .equals(other._myAnswers, _myAnswers) &&
             const DeepCollectionEquality()
@@ -170,6 +201,7 @@ class _$AnswerChunkImpl extends _AnswerChunk {
   int get hashCode => Object.hash(
       runtimeType,
       point,
+      const DeepCollectionEquality().hash(_questionIndexes),
       const DeepCollectionEquality().hash(_myAnswers),
       const DeepCollectionEquality().hash(_correctAnswers));
 
@@ -190,6 +222,7 @@ class _$AnswerChunkImpl extends _AnswerChunk {
 abstract class _AnswerChunk extends AnswerChunk {
   const factory _AnswerChunk(
       {required final int point,
+      required final List<int> questionIndexes,
       required final List<String> myAnswers,
       required final List<String> correctAnswers}) = _$AnswerChunkImpl;
   const _AnswerChunk._() : super._();
@@ -199,6 +232,8 @@ abstract class _AnswerChunk extends AnswerChunk {
 
   @override
   int get point;
+  @override
+  List<int> get questionIndexes;
   @override
   List<String> get myAnswers;
   @override

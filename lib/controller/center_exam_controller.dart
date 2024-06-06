@@ -48,13 +48,21 @@ class CenterExamController extends ExamController {
         .toList();
     if (answers.isEmpty) return;
     final answer = answers.first;
-    rxMyAnswerChunks.value = answer.pointAllocations.map((e) {
+    int startIndex = 1;
+    for (final e in answer.pointAllocations) {
       final point = e.point;
       final correctAnswers = e.answers;
       final myAnswers = correctAnswers.map((e) => "").toList();
-      return AnswerChunk(
-          point: point, correctAnswers: correctAnswers, myAnswers: myAnswers);
-    }).toList();
+      final questionIndexes =
+          List.generate(correctAnswers.length, (index) => startIndex + index);
+      final result = AnswerChunk(
+          point: point,
+          questionIndexes: questionIndexes,
+          correctAnswers: correctAnswers,
+          myAnswers: myAnswers);
+      rxMyAnswerChunks.add(result);
+      startIndex += correctAnswers.length;
+    }
   }
 
   void onElementTapped(int i, int j, int number) {
