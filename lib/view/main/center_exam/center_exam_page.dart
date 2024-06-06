@@ -18,9 +18,9 @@ class CenterExamPage extends HookWidget {
     final year = Get.parameters["year"];
     final subject = Get.parameters["subject"];
     useEffect(() {
-      if (year == null || subject == null) return;
+      if (year == null || subject == null) return controller.close;
       controller.init(year, subject);
-      return;
+      return controller.close;
     }, []);
     return BasicPage(
         appBar: AppBar(
@@ -73,38 +73,53 @@ class CenterExamPage extends HookWidget {
               );
             }),
             Obx(() {
-              final myPointAllocations = controller.rxMyAnswers;
+              final myAnswerChunks = controller.rxMyAnswerChunks;
               return Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ListView.builder(
-                    itemCount: myPointAllocations.length,
+                    itemCount: myAnswerChunks.length,
                     itemBuilder: (c, i) {
-                      final myPointAllocation = myPointAllocations[i];
-                      final answers = myPointAllocation.answers;
-                      final needFull = answers.length > 1;
+                      final myAnswerChunk = myAnswerChunks[i];
+                      final myAnswers = myAnswerChunk.myAnswers;
+                      final needFull = myAnswers.length > 1;
                       final needFullText = needFull ? "(完答)" : "";
                       return Column(children: [
                         Text(
-                            "問${i + 1}, 配点: ${myPointAllocation.point}$needFullText"),
-                        ...answers.map((myAnswer) {
-                          final j = answers.indexOf(myAnswer);
+                            "問${i + 1}, 配点: ${myAnswerChunk.point}$needFullText"),
+                        ...myAnswers.map((myAnswer) {
+                          final j = myAnswers.indexOf(myAnswer);
                           List<int> numbers = List.generate(9, (k) => k + 1);
                           return Row(
                             children: numbers.map((number) {
-                              final color = number.toString() == myAnswer
-                                  ? Colors.purple
-                                  : null;
                               return InkWell(
-                                onTap: () =>
-                                    controller.onElementTapped(i, j, number),
-                                child: Container(
-                                  padding: const EdgeInsets.all(16.0),
-                                  decoration: BoxDecoration(
-                                      border: Border.all(), color: color),
-                                  child: Text(number.toString()),
-                                ),
-                              );
+                                  onTap: () =>
+                                      controller.onElementTapped(i, j, number),
+                                  child: Obx(() {
+                                    Color? color;
+                                    final isGradedMode =
+                                        controller.rxIsGradeMode.value;
+                                    final isMyAnswer =
+                                        number.toString() == myAnswer;
+                                    if (isGradedMode &&
+                                        isMyAnswer &&
+                                        myAnswerChunk.isCorrect()) {
+                                      color = Colors.green;
+                                    } else if (isGradedMode &&
+                                        isMyAnswer &&
+                                        !myAnswerChunk.isCorrect()) {
+                                      color = Colors.red;
+                                    } else if (!isGradedMode && isMyAnswer) {
+                                      color = Colors.yellow;
+                                    }
+
+                                    return Container(
+                                      padding: const EdgeInsets.all(16.0),
+                                      decoration: BoxDecoration(
+                                          border: Border.all(), color: color),
+                                      child: Text(number.toString()),
+                                    );
+                                  }));
                             }).toList(),
                           );
                         }),
@@ -114,7 +129,18 @@ class CenterExamPage extends HookWidget {
                 ),
               );
             }),
-            ElevatedButton(onPressed: () {}, child: const Text("採点する"))
+            Obx(() {
+              final isGradedMode = controller.rxIsGradeMode;
+              if (isGradedMode.value) {
+                final gradedPoint = controller.rxGradedPoint;
+                final fullPoint = controller.rxFullPoint;
+                return Text("得点: ${gradedPoint.value}/${fullPoint.value}");
+              } else {
+                return ElevatedButton(
+                    onPressed: controller.onGradeButtonPressed,
+                    child: const Text("採点する"));
+              }
+            })
           ],
         ));
   }
