@@ -44,24 +44,78 @@ class CenterExamPage extends HookWidget {
                   Icons.description,
                   color: Colors.orange,
                 )),
+            InkWell(
+                onTap: () {
+                  controller.bookmark(Get.currentRoute);
+                },
+                child: const Icon(
+                  Icons.bookmark,
+                  color: Colors.orange,
+                )),
           ],
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => controller.bookmark(Get.currentRoute),
-          child: const Icon(Icons.bookmark),
-        ),
-        child: Obx(() {
-          final paths = controller.rxPaths;
-          return ListView(
-            scrollDirection: Axis.horizontal,
-            children: paths.map((e) {
-              return Container(
-                width: MediaQuery.of(context).size.width,
-                padding: const EdgeInsets.all(24.0),
-                child: Image.asset(e),
+        child: Column(
+          children: [
+            Obx(() {
+              final paths = controller.rxPaths;
+              return SizedBox(
+                height: MediaQuery.of(context).size.height * 0.5,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: paths.map((e) {
+                    return Container(
+                      width: MediaQuery.of(context).size.width,
+                      padding: const EdgeInsets.all(24.0),
+                      child: Image.asset(e),
+                    );
+                  }).toList(),
+                ),
               );
-            }).toList(),
-          );
-        }));
+            }),
+            Obx(() {
+              final myPointAllocations = controller.rxMyAnswers;
+              return Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListView.builder(
+                    itemCount: myPointAllocations.length,
+                    itemBuilder: (c, i) {
+                      final myPointAllocation = myPointAllocations[i];
+                      final answers = myPointAllocation.answers;
+                      final needFull = answers.length > 1;
+                      final needFullText = needFull ? "(完答)" : "";
+                      return Column(children: [
+                        Text(
+                            "問${i + 1}, 配点: ${myPointAllocation.point}$needFullText"),
+                        ...answers.map((myAnswer) {
+                          final j = answers.indexOf(myAnswer);
+                          List<int> numbers = List.generate(9, (k) => k + 1);
+                          return Row(
+                            children: numbers.map((number) {
+                              final color = number.toString() == myAnswer
+                                  ? Colors.purple
+                                  : null;
+                              return InkWell(
+                                onTap: () =>
+                                    controller.onElementTapped(i, j, number),
+                                child: Container(
+                                  padding: const EdgeInsets.all(16.0),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(), color: color),
+                                  child: Text(number.toString()),
+                                ),
+                              );
+                            }).toList(),
+                          );
+                        }),
+                      ]);
+                    },
+                  ),
+                ),
+              );
+            }),
+            ElevatedButton(onPressed: () {}, child: const Text("採点する"))
+          ],
+        ));
   }
 }
