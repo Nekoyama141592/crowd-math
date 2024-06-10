@@ -1,4 +1,5 @@
 import 'package:crowd_math/constants/enums.dart';
+import 'package:crowd_math/controller/abstract/center_questions_controller.dart';
 import 'package:crowd_math/controller/tokens_controller.dart';
 import 'package:crowd_math/core/id_core.dart';
 import 'package:crowd_math/extensions/shared_preferences_extension.dart';
@@ -9,16 +10,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:crowd_math/constants/center_exam/center_answers.dart';
 import 'package:crowd_math/constants/center_exam/center_exam_paths.dart';
 import 'package:crowd_math/constants/center_exam/center_exam_subject_constant.dart';
-import 'package:crowd_math/controller/abstract/exam_controller.dart';
 import 'package:crowd_math/model/center_answer/center_answer.dart';
 import 'package:crowd_math/model/center_exam/answer_chunk/answer_chunk.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CenterExamController extends ExamController {
-  final rxPaths = <String>[].obs;
-  final rxMyAnswerChunks = <AnswerChunk>[].obs;
+class CenterExamController extends CenterQuestionsController {
   final rxIsGradeMode = false.obs;
+  final rxPaths = <String>[].obs;
   final rxGradedPoint = 0.obs;
   final rxFullPoint = 0.obs;
   void init(String year, String subject) {
@@ -33,6 +32,10 @@ class CenterExamController extends ExamController {
     rxGradedPoint(0);
     rxFullPoint(0);
   }
+
+  @override
+  // TODO: implement showAnswer
+  bool get showGradedResult => rxIsGradeMode.value;
 
   void _setPaths(String year, String subject) {
     rxPaths.value = centerExamPaths().where((path) {
@@ -74,6 +77,7 @@ class CenterExamController extends ExamController {
     }
   }
 
+  @override
   void onElementTapped(int i, int j, int number) {
     if (rxIsGradeMode.value) return;
     List<String> answers = List.from(rxMyAnswerChunks[i].myAnswers);
@@ -107,6 +111,8 @@ class CenterExamController extends ExamController {
     Get.to(MyAnswerImagePage(imageIDs: imageIDs));
   }
 
+  void onCheckButtonPressed(BuildContext context) {}
+
   void onMenuPressed(BuildContext context, String currentRoute) {
     showCupertinoModalPopup(
         context: context,
@@ -122,7 +128,9 @@ class CenterExamController extends ExamController {
                   onPressed: () {
                     onDescriptionButtonPressed(context);
                   },
-                  child: const Text("自分の回答を見る")),
+                  child: const Text("写真の回答を見る")),
+              CupertinoActionSheetAction(
+                  onPressed: () {}, child: const Text("採点結果を見る")),
               CupertinoActionSheetAction(
                   onPressed: () {
                     bookmark(context, currentRoute);

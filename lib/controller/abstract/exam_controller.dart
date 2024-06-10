@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class ExamController {
+abstract class ExamController extends GetxController {
   void onImageButtonPressed(BuildContext context) async {
     final uint8list = await FileCore.getCompressedImage();
     if (uint8list == null) return;

@@ -1,6 +1,7 @@
 import 'package:crowd_math/controller/center_exam_controller.dart';
 import 'package:crowd_math/core/page_titile_core.dart';
 import 'package:crowd_math/view/components/basic_page.dart';
+import 'package:crowd_math/view/components/center_question_elements.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
@@ -50,63 +51,7 @@ class CenterExamPage extends HookWidget {
                 ),
               );
             }),
-            Obx(() {
-              final myAnswerChunks = controller.rxMyAnswerChunks;
-              return Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListView.builder(
-                    itemCount: myAnswerChunks.length,
-                    itemBuilder: (c, i) {
-                      final myAnswerChunk = myAnswerChunks[i];
-                      final myAnswers = myAnswerChunk.myAnswers;
-                      final needFull = myAnswers.length > 1;
-                      final needFullText = needFull ? "(完答)" : "";
-                      return Column(children: [
-                        Text(
-                            "問${myAnswerChunk.questionIndexes}, 配点: ${myAnswerChunk.point}$needFullText"),
-                        ...myAnswers.map((myAnswer) {
-                          final j = myAnswers.indexOf(myAnswer);
-                          List<int> numbers = List.generate(9, (k) => k + 1);
-                          return Row(
-                            children: numbers.map((number) {
-                              return InkWell(
-                                  onTap: () =>
-                                      controller.onElementTapped(i, j, number),
-                                  child: Obx(() {
-                                    Color? color;
-                                    final isGradedMode =
-                                        controller.rxIsGradeMode.value;
-                                    final isMyAnswer =
-                                        number.toString() == myAnswer;
-                                    if (isGradedMode &&
-                                        isMyAnswer &&
-                                        myAnswerChunk.isCorrect()) {
-                                      color = Colors.green;
-                                    } else if (isGradedMode &&
-                                        isMyAnswer &&
-                                        !myAnswerChunk.isCorrect()) {
-                                      color = Colors.red;
-                                    } else if (!isGradedMode && isMyAnswer) {
-                                      color = Colors.yellow;
-                                    }
-
-                                    return Container(
-                                      padding: const EdgeInsets.all(16.0),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(), color: color),
-                                      child: Text(number.toString()),
-                                    );
-                                  }));
-                            }).toList(),
-                          );
-                        }),
-                      ]);
-                    },
-                  ),
-                ),
-              );
-            }),
+            Expanded(child: CenterQuestionElements(controller: controller)),
             Obx(() {
               final isGradedMode = controller.rxIsGradeMode;
               if (isGradedMode.value) {

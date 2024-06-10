@@ -1,4 +1,5 @@
 import 'package:crowd_math/controller/tokens_controller.dart';
+import 'package:crowd_math/view/main/symbol_answer_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -61,9 +62,11 @@ class HomeScreen extends StatelessWidget {
                 return ListView(
                   children: myAnswers
                       .map((myAnswer) => ListTile(
-                            title: Text("${myAnswer.pageTitle}: ${myAnswer.gradedPoint()/myAnswer.fullPoint()}"),
+                            title: Text(
+                                "${myAnswer.pageTitle}: ${myAnswer.gradedPoint()}/${myAnswer.fullPoint()}"),
                             subtitle: Text(myAnswer.createdAt.toString()),
-                            onTap: () => Get.toNamed(myAnswer.pagePath),
+                            onTap: () => Get.to(
+                                SymbolAnswerPage(localSymbolAnswer: myAnswer)),
                             trailing: InkWell(
                               onTap: () =>
                                   controller.onRemoveSymbolAnswerButtonPressed(

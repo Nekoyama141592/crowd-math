@@ -76,7 +76,10 @@ class TokensController extends GetxController {
     rxImageAnswers.value = answers;
   }
 
-  void onRemoveSymbolAnswerButtonPressed(String symbolID) {}
+  void onRemoveSymbolAnswerButtonPressed(String symbolID) {
+    removeSymbolAnswer(symbolID);
+  }
+
   Future<void> removeSymbolAnswer(String symbolID) async {
     final prefs = await SharedPreferences.getInstance();
     final key = PrefsKey.symbolAnswers.name;
