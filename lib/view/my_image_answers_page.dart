@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
 
-class MyAnswerImagePage extends HookWidget {
-  const MyAnswerImagePage({super.key, required this.imageIDs});
+class MyImageAnswersPage extends HookWidget {
+  const MyImageAnswersPage({super.key, required this.imageIDs});
   final List<String> imageIDs;
   @override
   Widget build(BuildContext context) {

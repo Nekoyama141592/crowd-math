@@ -5,7 +5,7 @@ import 'package:crowd_math/core/id_core.dart';
 import 'package:crowd_math/extensions/shared_preferences_extension.dart';
 import 'package:crowd_math/model/local_symbol_answer/local_symbol_answer.dart';
 import 'package:crowd_math/ui_core/toast_core.dart';
-import 'package:crowd_math/view/my_answer_image_page.dart';
+import 'package:crowd_math/view/my_image_answers_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:crowd_math/constants/center_exam/center_answers.dart';
 import 'package:crowd_math/constants/center_exam/center_exam_paths.dart';
@@ -108,7 +108,7 @@ class CenterExamController extends CenterQuestionsController {
         .map((e) => e.imageID)
         .toList();
     Navigator.pop(context);
-    Get.to(MyAnswerImagePage(imageIDs: imageIDs));
+    Get.to(MyImageAnswersPage(imageIDs: imageIDs));
   }
 
   void onCheckButtonPressed(BuildContext context) {}

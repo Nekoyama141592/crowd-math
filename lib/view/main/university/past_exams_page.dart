@@ -1,7 +1,7 @@
 import 'package:crowd_math/controller/past_exams_controller.dart';
 import 'package:crowd_math/controller/tokens_controller.dart';
 import 'package:crowd_math/core/page_titile_core.dart';
-import 'package:crowd_math/view/my_answer_image_page.dart';
+import 'package:crowd_math/view/my_image_answers_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
@@ -37,7 +37,7 @@ class PastExamsPage extends HookWidget {
                         .where((p0) => p0.pagePath == Get.currentRoute)
                         .map((e) => e.imageID)
                         .toList();
-                    Get.to(MyAnswerImagePage(imageIDs: imageIDs));
+                    Get.to(MyImageAnswersPage(imageIDs: imageIDs));
                   },
                   child: const Icon(
                     Icons.description,
