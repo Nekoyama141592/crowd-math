@@ -3,7 +3,7 @@ extension CustomDateTimeFormatting on DateTime {
   String japaneseDateTime() {
     String formattedDate = '$year年$month月$day日';
     String formattedTime =
-        '${hour.toString().padLeft(2, '0')}時${minute.toString().padLeft(2, '0')}分${second.toString().padLeft(2, '0')}秒';
+        '${hour.toString().padLeft(2, '0')}時${minute.toString().padLeft(2, '0')}分';
     return '$formattedDate$formattedTime';
   }
 }
