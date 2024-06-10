@@ -29,7 +29,6 @@ class CenterExamPage extends HookWidget {
                     controller.onMenuPressed(context, Get.currentRoute),
                 child: const Icon(
                   Icons.menu,
-                  color: Colors.orange,
                 )),
           ],
         ),
