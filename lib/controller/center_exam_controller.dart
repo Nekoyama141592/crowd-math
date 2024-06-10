@@ -130,8 +130,6 @@ class CenterExamController extends CenterQuestionsController {
                   },
                   child: const Text("写真の回答を見る")),
               CupertinoActionSheetAction(
-                  onPressed: () {}, child: const Text("採点結果を見る")),
-              CupertinoActionSheetAction(
                   onPressed: () {
                     bookmark(context, currentRoute);
                   },

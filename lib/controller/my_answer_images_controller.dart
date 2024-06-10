@@ -4,15 +4,16 @@ import 'package:crowd_math/extensions/shared_preferences_extension.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class MyAnswerImageController extends GetxController {
-  final rxImage = Rx<Uint8List?>(null);
-  void init(String imageID) async {
+class MyAnswerImagesController extends GetxController {
+  final rxImages = <Uint8List?>[].obs;
+  void init(List<String> imageIDs) async {
     final prefs = await SharedPreferences.getInstance();
-    final image = prefs.getImage(imageID);
-    rxImage(image);
+    for (final imageID in imageIDs) {
+      rxImages.add(prefs.getImage(imageID));
+    }
   }
 
   void close() {
-    rxImage.value = null;
+    rxImages.value = [];
   }
 }
