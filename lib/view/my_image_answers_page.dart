@@ -1,17 +1,18 @@
 import 'package:crowd_math/controller/my_answer_images_controller.dart';
+import 'package:crowd_math/model/local_image_answer/local_my_ans_page_path.dart';
 import 'package:crowd_math/view/components/basic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
 
 class MyImageAnswersPage extends HookWidget {
-  const MyImageAnswersPage({super.key, required this.imageIDs});
-  final List<String> imageIDs;
+  const MyImageAnswersPage({super.key, required this.myImageAnswers});
+  final List<LocalImageAnswer> myImageAnswers;
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(MyAnswerImagesController());
     useEffect(() {
-      controller.init(imageIDs);
+      controller.init(myImageAnswers);
       return controller.close;
     }, []);
     return BasicPage(
@@ -21,21 +22,31 @@ class MyImageAnswersPage extends HookWidget {
         child: Align(
           alignment: Alignment.center,
           child: Obx(() {
-            final images = controller.rxImages;
-            if (images.isEmpty) {
+            final wrappers = controller.rxWrappers;
+            if (wrappers.isEmpty) {
               return const Align(
                 alignment: Alignment.center,
                 child: Text("回答はまだありません"),
               );
             }
             return Column(
-              children: images.map((bytes) {
-                if (bytes == null) {
-                  return const SizedBox.shrink();
-                } else {
-                  return Image.memory(bytes);
-                }
-              }).toList(),
+              children: [
+                Text(wrappers.first.localImageAnswer.pageTitle),
+                Expanded(
+                  child: ListView(
+                    children: wrappers.map((wrapper) {
+                      final image = wrapper.image;
+                      final answer = wrapper.localImageAnswer;
+                      return Column(
+                        children: [
+                          Image.memory(image),
+                          Text(answer.createdAt.toString()),
+                        ],
+                      );
+                    }).toList(),
+                  ),
+                )
+              ],
             );
           }),
         ));

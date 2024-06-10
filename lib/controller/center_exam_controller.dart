@@ -103,12 +103,11 @@ class CenterExamController extends CenterQuestionsController {
   }
 
   void onDescriptionButtonPressed(BuildContext context) {
-    final imageIDs = TokensController.to.rxImageAnswers
+    final myImageAnswers = TokensController.to.rxImageAnswers
         .where((p0) => p0.pagePath == Get.currentRoute)
-        .map((e) => e.imageID)
         .toList();
     Navigator.pop(context);
-    Get.to(MyImageAnswersPage(imageIDs: imageIDs));
+    Get.to(MyImageAnswersPage(myImageAnswers: myImageAnswers));
   }
 
   void onCheckButtonPressed(BuildContext context) {}

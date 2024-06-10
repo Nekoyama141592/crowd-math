@@ -33,11 +33,10 @@ class PastExamsPage extends HookWidget {
                   )),
               InkWell(
                   onTap: () {
-                    final imageIDs = TokensController.to.rxImageAnswers
+                    final myImageAnswers = TokensController.to.rxImageAnswers
                         .where((p0) => p0.pagePath == Get.currentRoute)
-                        .map((e) => e.imageID)
                         .toList();
-                    Get.to(MyImageAnswersPage(imageIDs: imageIDs));
+                    Get.to(MyImageAnswersPage(myImageAnswers: myImageAnswers));
                   },
                   child: const Icon(
                     Icons.description,
