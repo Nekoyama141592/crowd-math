@@ -1,3 +1,4 @@
 ${ans_image_id}: 自分の答案画像
 imageAnswers: 答案を保存したページのJsonの配列
 bookmarkExams: ブックマークしたページのJsonの配列
+symbolAnswers: 記号で回答した内容のJsonの配列
