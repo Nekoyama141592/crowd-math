@@ -1,5 +1,5 @@
 import 'package:crowd_math/controller/tokens_controller.dart';
-import 'package:crowd_math/view/main/symbol_answer_page.dart';
+import 'package:crowd_math/view/symbol_answer_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
