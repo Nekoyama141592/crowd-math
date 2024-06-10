@@ -21,7 +21,7 @@ class CenterExamPage extends HookWidget {
       controller.init(year, subject);
       return controller.close;
     }, []);
-    const tabTitles = ["問題", "採点"];
+    const tabTitles = ["問題と解答", "採点"];
     return DefaultTabController(
       length: tabTitles.length,
       child: BasicPage(
