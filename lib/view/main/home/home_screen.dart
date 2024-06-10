@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                 return ListView(
                   children: myAnswers
                       .map((myAnswer) => ListTile(
-                            title: Text(myAnswer.pageTitle),
+                            title: Text("${myAnswer.pageTitle}: ${myAnswer.gradedPoint()/myAnswer.fullPoint()}"),
                             subtitle: Text(myAnswer.createdAt.toString()),
                             onTap: () => Get.toNamed(myAnswer.pagePath),
                             trailing: InkWell(
