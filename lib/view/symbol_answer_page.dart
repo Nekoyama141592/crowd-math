@@ -27,7 +27,7 @@ class SymbolAnswerPage extends HookWidget {
         child: Column(
           children: [
             Text(
-                "${localSymbolAnswer.gradedPoint()}/${localSymbolAnswer.fullPoint()}"),
+                "${localSymbolAnswer.gradedPoint()}/${localSymbolAnswer.fullPoint()} 日時:${localSymbolAnswer.createdAt.toString()}"),
             Expanded(child: CenterQuestionElements(controller: controller)),
             ElevatedButton(
                 onPressed: () {

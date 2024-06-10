@@ -21,20 +21,25 @@ class CenterExamPage extends HookWidget {
       controller.init(year, subject);
       return controller.close;
     }, []);
-    return BasicPage(
-        appBar: AppBar(
-          title: Text(PageTitleCore.pageTitleFromPagePath(Get.currentRoute)),
-          actions: [
-            InkWell(
-                onTap: () =>
-                    controller.onMenuPressed(context, Get.currentRoute),
-                child: const Icon(
-                  Icons.menu,
-                )),
-          ],
-        ),
-        child: Column(
-          children: [
+    const tabTitles = ["問題", "採点"];
+    return DefaultTabController(
+      length: tabTitles.length,
+      child: BasicPage(
+          appBar: AppBar(
+            bottom: TabBar(
+                indicatorSize: TabBarIndicatorSize.label,
+                tabs: tabTitles.map((title) => Tab(text: title)).toList()),
+            title: Text(PageTitleCore.pageTitleFromPagePath(Get.currentRoute)),
+            actions: [
+              InkWell(
+                  onTap: () =>
+                      controller.onMenuPressed(context, Get.currentRoute),
+                  child: const Icon(
+                    Icons.menu,
+                  )),
+            ],
+          ),
+          child: TabBarView(children: [
             Obx(() {
               final paths = controller.rxPaths;
               return SizedBox(
@@ -51,20 +56,24 @@ class CenterExamPage extends HookWidget {
                 ),
               );
             }),
-            Expanded(child: CenterQuestionElements(controller: controller)),
-            Obx(() {
-              final isGradedMode = controller.rxIsGradeMode;
-              if (isGradedMode.value) {
-                final gradedPoint = controller.rxGradedPoint;
-                final fullPoint = controller.rxFullPoint;
-                return Text("得点: ${gradedPoint.value}/${fullPoint.value}");
-              } else {
-                return ElevatedButton(
-                    onPressed: controller.onGradeButtonPressed,
-                    child: const Text("採点する"));
-              }
-            })
-          ],
-        ));
+            Column(
+              children: [
+                Expanded(child: CenterQuestionElements(controller: controller)),
+                Obx(() {
+                  final isGradedMode = controller.rxIsGradeMode;
+                  if (isGradedMode.value) {
+                    final gradedPoint = controller.rxGradedPoint;
+                    final fullPoint = controller.rxFullPoint;
+                    return Text("得点: ${gradedPoint.value}/${fullPoint.value}");
+                  } else {
+                    return ElevatedButton(
+                        onPressed: controller.onGradeButtonPressed,
+                        child: const Text("採点する"));
+                  }
+                })
+              ],
+            )
+          ])),
+    );
   }
 }

@@ -22,7 +22,7 @@ class CenterQuestionElements extends StatelessWidget {
               final needFullText = needFull ? "(完答)" : "";
               return Column(children: [
                 Text(
-                    "問${myAnswerChunk.questionIndexes}, 配点: ${myAnswerChunk.point}$needFullText"),
+                    "解答番号${myAnswerChunk.questionIndexes}, 配点: ${myAnswerChunk.point}$needFullText"),
                 ...myAnswers.map((myAnswer) {
                   final j = myAnswers.indexOf(myAnswer);
                   List<int> numbers = List.generate(9, (k) => k + 1);
