@@ -5,14 +5,14 @@ part 'local_my_ans_page_path.freezed.dart';
 part 'local_my_ans_page_path.g.dart';
 
 @freezed
-abstract class LocalMyAnsPagePath implements _$LocalMyAnsPagePath {
-  const LocalMyAnsPagePath._();
-  const factory LocalMyAnsPagePath(
+abstract class LocalImageAnswer implements _$LocalImageAnswer {
+  const LocalImageAnswer._();
+  const factory LocalImageAnswer(
       {required DateTime createdAt,
       @Default("") String memo,
       required String pagePath,
-      required String imageID}) = _LocalMyAnsPagePath;
-  factory LocalMyAnsPagePath.fromJson(Map<String, dynamic> json) =>
-      _$LocalMyAnsPagePathFromJson(json);
+      required String imageID}) = _LocalImageAnswer;
+  factory LocalImageAnswer.fromJson(Map<String, dynamic> json) =>
+      _$LocalImageAnswerFromJson(json);
   String get pageTitle => PageTitleCore.pageTitleFromPagePath(pagePath);
 }

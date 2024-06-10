@@ -15,11 +15,19 @@ class MyAnswerImagePage extends HookWidget {
       return controller.close;
     }, []);
     return BasicPage(
-        appBar: AppBar(),
+        appBar: AppBar(
+          title: const Text("自分の回答"),
+        ),
         child: Align(
           alignment: Alignment.center,
           child: Obx(() {
             final images = controller.rxImages;
+            if (images.isEmpty) {
+              return const Align(
+                alignment: Alignment.center,
+                child: Text("回答はまだありません"),
+              );
+            }
             return Column(
               children: images.map((bytes) {
                 if (bytes == null) {

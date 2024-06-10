@@ -1,3 +1,6 @@
+import 'package:crowd_math/controller/tokens_controller.dart';
+import 'package:crowd_math/view/my_answer_image_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:crowd_math/constants/center_exam/center_answers.dart';
 import 'package:crowd_math/constants/center_exam/center_exam_paths.dart';
 import 'package:crowd_math/constants/center_exam/center_exam_subject_constant.dart';
@@ -86,5 +89,45 @@ class CenterExamController extends ExamController {
     }
     rxGradedPoint(gradedPoint);
     rxFullPoint(fullPoint);
+  }
+
+  void onDescriptionButtonPressed(BuildContext context) {
+    final imageIDs = TokensController.to.rxMyAnswers
+        .where((p0) => p0.pagePath == Get.currentRoute)
+        .map((e) => e.imageID)
+        .toList();
+    Navigator.pop(context);
+    Get.to(MyAnswerImagePage(imageIDs: imageIDs));
+  }
+
+  void onMenuPressed(BuildContext context, String currentRoute) {
+    showCupertinoModalPopup(
+        context: context,
+        builder: (innerContext) {
+          return CupertinoActionSheet(
+            actions: [
+              CupertinoActionSheetAction(
+                  onPressed: () {
+                    onImageButtonPressed(context);
+                  },
+                  child: const Text("写真で回答を保存")),
+              CupertinoActionSheetAction(
+                  onPressed: () {
+                    onDescriptionButtonPressed(context);
+                  },
+                  child: const Text("自分の回答を見る")),
+              CupertinoActionSheetAction(
+                  onPressed: () {
+                    bookmark(context, currentRoute);
+                  },
+                  child: const Text("ブックマーク")),
+              CupertinoActionSheetAction(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("戻る")),
+            ],
+          );
+        });
   }
 }

@@ -26,7 +26,7 @@ class PastExamsPage extends HookWidget {
             title: Text(PageTitleCore.pageTitleFromPagePath(Get.currentRoute)),
             actions: [
               InkWell(
-                  onTap: controller.onImageButtonPressed,
+                  onTap: () => controller.onImageButtonPressed(context),
                   child: const Icon(
                     Icons.image,
                     color: Colors.orange,
@@ -46,7 +46,7 @@ class PastExamsPage extends HookWidget {
             ],
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: () => controller.bookmark(Get.currentRoute),
+            onPressed: () => controller.bookmark(context, Get.currentRoute),
             child: const Icon(Icons.bookmark),
           ),
           body: Obx(() {

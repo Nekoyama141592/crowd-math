@@ -14,37 +14,35 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-LocalBookmarkPagePath _$LocalBookmarkPagePathFromJson(
-    Map<String, dynamic> json) {
-  return _LocalBookmarkPagePath.fromJson(json);
+LocalBookmarkExam _$LocalBookmarkExamFromJson(Map<String, dynamic> json) {
+  return _LocalBookmarkExam.fromJson(json);
 }
 
 /// @nodoc
-mixin _$LocalBookmarkPagePath {
+mixin _$LocalBookmarkExam {
   DateTime get createdAt => throw _privateConstructorUsedError;
   String get memo => throw _privateConstructorUsedError;
   String get pagePath => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LocalBookmarkPagePathCopyWith<LocalBookmarkPagePath> get copyWith =>
+  $LocalBookmarkExamCopyWith<LocalBookmarkExam> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LocalBookmarkPagePathCopyWith<$Res> {
-  factory $LocalBookmarkPagePathCopyWith(LocalBookmarkPagePath value,
-          $Res Function(LocalBookmarkPagePath) then) =
-      _$LocalBookmarkPagePathCopyWithImpl<$Res, LocalBookmarkPagePath>;
+abstract class $LocalBookmarkExamCopyWith<$Res> {
+  factory $LocalBookmarkExamCopyWith(
+          LocalBookmarkExam value, $Res Function(LocalBookmarkExam) then) =
+      _$LocalBookmarkExamCopyWithImpl<$Res, LocalBookmarkExam>;
   @useResult
   $Res call({DateTime createdAt, String memo, String pagePath});
 }
 
 /// @nodoc
-class _$LocalBookmarkPagePathCopyWithImpl<$Res,
-        $Val extends LocalBookmarkPagePath>
-    implements $LocalBookmarkPagePathCopyWith<$Res> {
-  _$LocalBookmarkPagePathCopyWithImpl(this._value, this._then);
+class _$LocalBookmarkExamCopyWithImpl<$Res, $Val extends LocalBookmarkExam>
+    implements $LocalBookmarkExamCopyWith<$Res> {
+  _$LocalBookmarkExamCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -76,24 +74,22 @@ class _$LocalBookmarkPagePathCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$LocalBookmarkPagePathImplCopyWith<$Res>
-    implements $LocalBookmarkPagePathCopyWith<$Res> {
-  factory _$$LocalBookmarkPagePathImplCopyWith(
-          _$LocalBookmarkPagePathImpl value,
-          $Res Function(_$LocalBookmarkPagePathImpl) then) =
-      __$$LocalBookmarkPagePathImplCopyWithImpl<$Res>;
+abstract class _$$LocalBookmarkExamImplCopyWith<$Res>
+    implements $LocalBookmarkExamCopyWith<$Res> {
+  factory _$$LocalBookmarkExamImplCopyWith(_$LocalBookmarkExamImpl value,
+          $Res Function(_$LocalBookmarkExamImpl) then) =
+      __$$LocalBookmarkExamImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({DateTime createdAt, String memo, String pagePath});
 }
 
 /// @nodoc
-class __$$LocalBookmarkPagePathImplCopyWithImpl<$Res>
-    extends _$LocalBookmarkPagePathCopyWithImpl<$Res,
-        _$LocalBookmarkPagePathImpl>
-    implements _$$LocalBookmarkPagePathImplCopyWith<$Res> {
-  __$$LocalBookmarkPagePathImplCopyWithImpl(_$LocalBookmarkPagePathImpl _value,
-      $Res Function(_$LocalBookmarkPagePathImpl) _then)
+class __$$LocalBookmarkExamImplCopyWithImpl<$Res>
+    extends _$LocalBookmarkExamCopyWithImpl<$Res, _$LocalBookmarkExamImpl>
+    implements _$$LocalBookmarkExamImplCopyWith<$Res> {
+  __$$LocalBookmarkExamImplCopyWithImpl(_$LocalBookmarkExamImpl _value,
+      $Res Function(_$LocalBookmarkExamImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -103,7 +99,7 @@ class __$$LocalBookmarkPagePathImplCopyWithImpl<$Res>
     Object? memo = null,
     Object? pagePath = null,
   }) {
-    return _then(_$LocalBookmarkPagePathImpl(
+    return _then(_$LocalBookmarkExamImpl(
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -122,13 +118,13 @@ class __$$LocalBookmarkPagePathImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$LocalBookmarkPagePathImpl extends _LocalBookmarkPagePath {
-  const _$LocalBookmarkPagePathImpl(
+class _$LocalBookmarkExamImpl extends _LocalBookmarkExam {
+  const _$LocalBookmarkExamImpl(
       {required this.createdAt, this.memo = "", required this.pagePath})
       : super._();
 
-  factory _$LocalBookmarkPagePathImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LocalBookmarkPagePathImplFromJson(json);
+  factory _$LocalBookmarkExamImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LocalBookmarkExamImplFromJson(json);
 
   @override
   final DateTime createdAt;
@@ -140,14 +136,14 @@ class _$LocalBookmarkPagePathImpl extends _LocalBookmarkPagePath {
 
   @override
   String toString() {
-    return 'LocalBookmarkPagePath(createdAt: $createdAt, memo: $memo, pagePath: $pagePath)';
+    return 'LocalBookmarkExam(createdAt: $createdAt, memo: $memo, pagePath: $pagePath)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LocalBookmarkPagePathImpl &&
+            other is _$LocalBookmarkExamImpl &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.memo, memo) || other.memo == memo) &&
@@ -162,27 +158,27 @@ class _$LocalBookmarkPagePathImpl extends _LocalBookmarkPagePath {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LocalBookmarkPagePathImplCopyWith<_$LocalBookmarkPagePathImpl>
-      get copyWith => __$$LocalBookmarkPagePathImplCopyWithImpl<
-          _$LocalBookmarkPagePathImpl>(this, _$identity);
+  _$$LocalBookmarkExamImplCopyWith<_$LocalBookmarkExamImpl> get copyWith =>
+      __$$LocalBookmarkExamImplCopyWithImpl<_$LocalBookmarkExamImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$LocalBookmarkPagePathImplToJson(
+    return _$$LocalBookmarkExamImplToJson(
       this,
     );
   }
 }
 
-abstract class _LocalBookmarkPagePath extends LocalBookmarkPagePath {
-  const factory _LocalBookmarkPagePath(
+abstract class _LocalBookmarkExam extends LocalBookmarkExam {
+  const factory _LocalBookmarkExam(
       {required final DateTime createdAt,
       final String memo,
-      required final String pagePath}) = _$LocalBookmarkPagePathImpl;
-  const _LocalBookmarkPagePath._() : super._();
+      required final String pagePath}) = _$LocalBookmarkExamImpl;
+  const _LocalBookmarkExam._() : super._();
 
-  factory _LocalBookmarkPagePath.fromJson(Map<String, dynamic> json) =
-      _$LocalBookmarkPagePathImpl.fromJson;
+  factory _LocalBookmarkExam.fromJson(Map<String, dynamic> json) =
+      _$LocalBookmarkExamImpl.fromJson;
 
   @override
   DateTime get createdAt;
@@ -192,6 +188,6 @@ abstract class _LocalBookmarkPagePath extends LocalBookmarkPagePath {
   String get pagePath;
   @override
   @JsonKey(ignore: true)
-  _$$LocalBookmarkPagePathImplCopyWith<_$LocalBookmarkPagePathImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  _$$LocalBookmarkExamImplCopyWith<_$LocalBookmarkExamImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
