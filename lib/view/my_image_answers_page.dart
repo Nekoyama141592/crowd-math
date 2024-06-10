@@ -1,4 +1,5 @@
 import 'package:crowd_math/controller/my_answer_images_controller.dart';
+import 'package:crowd_math/extensions/custom_date_time_formatting.dart';
 import 'package:crowd_math/model/local_image_answer/local_my_ans_page_path.dart';
 import 'package:crowd_math/view/components/basic_page.dart';
 import 'package:flutter/material.dart';
@@ -40,7 +41,7 @@ class MyImageAnswersPage extends HookWidget {
                       return Column(
                         children: [
                           Image.memory(image),
-                          Text(answer.createdAt.toString()),
+                          Text(answer.createdAt.japaneseDateTime()),
                         ],
                       );
                     }).toList(),

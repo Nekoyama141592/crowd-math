@@ -1,4 +1,5 @@
 import 'package:crowd_math/controller/symbol_answer_controller.dart';
+import 'package:crowd_math/extensions/custom_date_time_formatting.dart';
 import 'package:crowd_math/model/center_exam/answer_chunk/answer_chunk.dart';
 import 'package:crowd_math/model/local_symbol_answer/local_symbol_answer.dart';
 import 'package:crowd_math/view/components/basic_page.dart';
@@ -27,7 +28,7 @@ class SymbolAnswerPage extends HookWidget {
         child: Column(
           children: [
             Text(
-                "${localSymbolAnswer.gradedPoint()}/${localSymbolAnswer.fullPoint()} 日時:${localSymbolAnswer.createdAt.toString()}"),
+                "${localSymbolAnswer.gradedPoint()}/${localSymbolAnswer.fullPoint()} 日時:${localSymbolAnswer.createdAt.japaneseDateTime()}"),
             Expanded(child: CenterQuestionElements(controller: controller)),
             ElevatedButton(
                 onPressed: () {

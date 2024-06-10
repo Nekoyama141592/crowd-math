@@ -1,4 +1,5 @@
 import 'package:crowd_math/controller/tokens_controller.dart';
+import 'package:crowd_math/extensions/custom_date_time_formatting.dart';
 import 'package:crowd_math/view/my_image_answer_page.dart';
 import 'package:crowd_math/view/symbol_answer_page.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +37,8 @@ class HomeScreen extends StatelessWidget {
                     children: bookmarks
                         .map((bookmark) => ListTile(
                               title: Text(bookmark.pageTitle),
-                              subtitle: Text(bookmark.createdAt.toString()),
+                              subtitle:
+                                  Text(bookmark.createdAt.japaneseDateTime()),
                               onTap: () => Get.toNamed(bookmark.pagePath),
                               trailing: InkWell(
                                 onTap: () =>
@@ -67,7 +69,8 @@ class HomeScreen extends StatelessWidget {
                     children: myAnswers
                         .map((myAnswer) => ListTile(
                               title: Text(myAnswer.pageTitle),
-                              subtitle: Text(myAnswer.createdAt.toString()),
+                              subtitle:
+                                  Text(myAnswer.createdAt.japaneseDateTime()),
                               onTap: () => Get.to(MyImageAnswerPage(
                                   localImageAnswer: myAnswer)),
                               trailing: InkWell(
@@ -97,7 +100,8 @@ class HomeScreen extends StatelessWidget {
                         .map((myAnswer) => ListTile(
                               title: Text(
                                   "${myAnswer.pageTitle}: ${myAnswer.gradedPoint()}/${myAnswer.fullPoint()}"),
-                              subtitle: Text(myAnswer.createdAt.toString()),
+                              subtitle:
+                                  Text(myAnswer.createdAt.japaneseDateTime()),
                               onTap: () => Get.to(SymbolAnswerPage(
                                   localSymbolAnswer: myAnswer)),
                               trailing: InkWell(
