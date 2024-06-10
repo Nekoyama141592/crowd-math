@@ -27,16 +27,26 @@ class CenterExamSubjectsPage extends HookWidget {
           final subjects = controller.rxSubjects;
           return ListView(
             children: subjects
-                .map((subject) => ListTile(
-                      title: Text(subject.subjectName),
-                      onTap: () {
-                        if (paramYear == null) return;
-                        final year = int.tryParse(paramYear);
-                        if (year == null) return;
-                        final path =
-                            CenterExamPage.generatePath(year, subject.subject);
-                        Get.toNamed(path);
-                      },
+                .map((subject) => Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        padding: const EdgeInsets.all(8.0),
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(8.0)),
+                            border: Border.all()),
+                        child: ListTile(
+                          title: Text(subject.subjectName),
+                          onTap: () {
+                            if (paramYear == null) return;
+                            final year = int.tryParse(paramYear);
+                            if (year == null) return;
+                            final path = CenterExamPage.generatePath(
+                                year, subject.subject);
+                            Get.toNamed(path);
+                          },
+                        ),
+                      ),
                     ))
                 .toList(),
           );

@@ -14,15 +14,17 @@ class CenterExamYearsScreen extends StatelessWidget {
       appBar: AppBar(),
       body: ListView(
         children: yearsList.map((year) {
-          return Column(
-            children: [
-              ListTile(
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(8.0)),
+                  border: Border.all()),
+              child: ListTile(
                   title: Text("$year年"),
                   onTap: () => controller.onYearButtonTapped(year)),
-              const SizedBox(
-                height: 20.0,
-              ),
-            ],
+            ),
           );
         }).toList(),
       ),

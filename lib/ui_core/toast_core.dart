@@ -5,13 +5,13 @@ import 'package:get/get.dart';
 
 class ToastCore {
   static Future<void> showFlutterToast(String msg,
-      {int timeInSecForIosWeb = 5}) async {
+      {int timeInSecForIosWeb = 1}) async {
     await fluttertoast.Fluttertoast.showToast(
         msg: msg, timeInSecForIosWeb: timeInSecForIosWeb);
   }
 
   static Future<void> showErrorFlutterToast(String msg,
-      {int timeInSecForIosWeb = 5}) async {
+      {int timeInSecForIosWeb = 1}) async {
     await fluttertoast.Fluttertoast.showToast(
         msg: msg,
         timeInSecForIosWeb: timeInSecForIosWeb,

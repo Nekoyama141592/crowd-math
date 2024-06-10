@@ -37,7 +37,9 @@ class CenterExamPage extends HookWidget {
                   child: const Icon(
                     Icons.menu,
                   )),
-              const SizedBox(width: 16.0,)
+              const SizedBox(
+                width: 16.0,
+              )
             ],
           ),
           child: TabBarView(children: [
