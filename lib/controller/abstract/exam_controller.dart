@@ -13,6 +13,16 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class ExamController {
+  void onImageButtonPressed(BuildContext context) async {
+    final uint8list = await FileCore.getCompressedImage();
+    if (uint8list == null) return;
+    final pagePath = Get.currentRoute;
+    await saveMyImageAns(pagePath, uint8list);
+    if (context.mounted) {
+      Navigator.pop(context);
+    }
+  }
+
   Future<void> bookmark(BuildContext context, String pagePath) async {
     final prefs = await SharedPreferences.getInstance();
     final key = PrefsKey.bookmarkExams.name;
@@ -29,16 +39,6 @@ abstract class ExamController {
     }
   }
 
-  void onImageButtonPressed(BuildContext context) async {
-    final uint8list = await FileCore.getCompressedImage();
-    if (uint8list == null) return;
-    final pagePath = Get.currentRoute;
-    await saveMyImageAns(pagePath, uint8list);
-    if (context.mounted) {
-      Navigator.pop(context);
-    }
-  }
-
   Future<void> saveMyImageAns(String pagePath, Uint8List uint8list) async {
     final prefs = await SharedPreferences.getInstance();
     final key = PrefsKey.imageAnswers.name;
@@ -50,7 +50,7 @@ abstract class ExamController {
     jsonList.add(jsonData);
     await prefs.setJsonList(key, jsonList);
     await prefs.setImage(imageID, uint8list);
-    TokensController.to.rxMyAnswers.add(myAns);
+    TokensController.to.rxImageAnswers.add(myAns);
     ToastCore.showFlutterToast("回答を保存しました", timeInSecForIosWeb: 1);
   }
 }

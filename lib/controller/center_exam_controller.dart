@@ -1,4 +1,9 @@
+import 'package:crowd_math/constants/enums.dart';
 import 'package:crowd_math/controller/tokens_controller.dart';
+import 'package:crowd_math/core/id_core.dart';
+import 'package:crowd_math/extensions/shared_preferences_extension.dart';
+import 'package:crowd_math/model/local_symbol_answer/local_symbol_answer.dart';
+import 'package:crowd_math/ui_core/toast_core.dart';
 import 'package:crowd_math/view/my_answer_image_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:crowd_math/constants/center_exam/center_answers.dart';
@@ -8,6 +13,7 @@ import 'package:crowd_math/controller/abstract/exam_controller.dart';
 import 'package:crowd_math/model/center_answer/center_answer.dart';
 import 'package:crowd_math/model/center_exam/answer_chunk/answer_chunk.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CenterExamController extends ExamController {
   final rxPaths = <String>[].obs;
@@ -89,10 +95,11 @@ class CenterExamController extends ExamController {
     }
     rxGradedPoint(gradedPoint);
     rxFullPoint(fullPoint);
+    _saveSymbolImageAns();
   }
 
   void onDescriptionButtonPressed(BuildContext context) {
-    final imageIDs = TokensController.to.rxMyAnswers
+    final imageIDs = TokensController.to.rxImageAnswers
         .where((p0) => p0.pagePath == Get.currentRoute)
         .map((e) => e.imageID)
         .toList();
@@ -129,5 +136,25 @@ class CenterExamController extends ExamController {
             ],
           );
         });
+  }
+
+  Future<void> _saveSymbolImageAns() async {
+    final pagePath = Get.currentRoute;
+    final prefs = await SharedPreferences.getInstance();
+    final key = PrefsKey.symbolAnswers.name;
+    final jsonList = prefs.getJsonList(key) ?? [];
+    final answerChunks =
+        rxMyAnswerChunks.map((element) => element.toJson()).toList();
+    final id = IdCore.uuidV4();
+    final myAns = LocalSymbolAnswer(
+        id: id,
+        createdAt: DateTime.now(),
+        pagePath: pagePath,
+        answerChunks: answerChunks);
+    final jsonData = myAns.toJson();
+    jsonList.add(jsonData);
+    await prefs.setJsonList(key, jsonList);
+    TokensController.to.rxSymbolAnswers.add(myAns);
+    ToastCore.showFlutterToast("採点結果を保存しました", timeInSecForIosWeb: 1);
   }
 }

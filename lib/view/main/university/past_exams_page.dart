@@ -33,7 +33,7 @@ class PastExamsPage extends HookWidget {
                   )),
               InkWell(
                   onTap: () {
-                    final imageIDs = TokensController.to.rxMyAnswers
+                    final imageIDs = TokensController.to.rxImageAnswers
                         .where((p0) => p0.pagePath == Get.currentRoute)
                         .map((e) => e.imageID)
                         .toList();
