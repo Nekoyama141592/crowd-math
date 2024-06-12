@@ -597,6 +597,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
 				ENABLE_BITCODE = NO;
@@ -605,8 +607,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.crowdMathDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.crowdMath;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -934,6 +937,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
 				ENABLE_BITCODE = NO;
@@ -942,8 +947,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.crowdMathDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.crowdMath;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -957,6 +963,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = "$(FLUTTER_BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
 				ENABLE_BITCODE = NO;
@@ -965,8 +973,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.crowdMathDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.crowdMath;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1194,8 +1203,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 12530D1F4CC75788A2EDB5C9 /* Pods-Runner.debug-dev.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.crowdMath;
 				PRODUCT_NAME = Runner;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = "Debug-dev";
 		};
@@ -1203,8 +1216,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9C1CAC8178F92DE1B846596E /* Pods-Runner.profile-dev.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.crowdMath;
 				PRODUCT_NAME = Runner;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = "Profile-dev";
 		};
@@ -1212,8 +1229,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE570CD6AAB71D7869878373 /* Pods-Runner.release-dev.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.crowdMath;
 				PRODUCT_NAME = Runner;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = "Release-dev";
 		};
@@ -1221,9 +1242,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D76F636923DD3D73C6ACA5FD /* Pods-Runner.debug-prod.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.crowdMathDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.crowdMath;
 				PRODUCT_NAME = Runner;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = "Debug-prod";
 		};
@@ -1231,9 +1255,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FDFB61B99424EA368B7F4D49 /* Pods-Runner.profile-prod.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.crowdMathDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.crowdMath;
 				PRODUCT_NAME = Runner;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = "Profile-prod";
 		};
@@ -1241,9 +1268,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CB5C37694FAC98AA9A67A2A3 /* Pods-Runner.release-prod.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z6C5BQY9P3;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.crowdMathDev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.crowdMath;
 				PRODUCT_NAME = Runner;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = "Release-prod";
 		};
