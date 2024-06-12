@@ -8,22 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
-		23CE57FADE7549124F332BFE /* devDebug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 91BCAA2794D14D456EA4A347 /* devDebug.xcconfig */; };
 		2B9F9DD35032B33BE542D547 /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C94BD7781B67AA7B9A0F017B /* Pods_RunnerTests.framework */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		41CE6CB17E5C47841951A7BC /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99EEB114D34F80737F70CD37 /* Pods_Runner.framework */; };
-		4CC8CC87D1EFEB39437C2EB7 /* devProfile.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = D888943A00CBDA16DC3AB277 /* devProfile.xcconfig */; };
-		5047324FA79C7B543B1C49A1 /* prodRelease.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 174D31579FA23FA43C10ECA6 /* prodRelease.xcconfig */; };
 		600379849B135040B87277FA /* devLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFC972704B14F55AEAF11E31 /* devLaunchScreen.storyboard */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		755D33FA2C694A5AF704B454 /* prodLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E68FD81FC92E59CA38EC9FC /* prodLaunchScreen.storyboard */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
-		B08386F8B8A8E70339A11F63 /* prodDebug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 7B86A2EA43421C7A434C1E24 /* prodDebug.xcconfig */; };
-		B4F772B75F9BC8107CAB77C1 /* prodProfile.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DA50999DF064A81E7AF9C019 /* prodProfile.xcconfig */; };
-		C700BCE32F9411723325670A /* devRelease.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4D1312D7FF2CD1C2A2A24C6A /* devRelease.xcconfig */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -311,12 +305,6 @@
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
-				23CE57FADE7549124F332BFE /* devDebug.xcconfig in Resources */,
-				4CC8CC87D1EFEB39437C2EB7 /* devProfile.xcconfig in Resources */,
-				C700BCE32F9411723325670A /* devRelease.xcconfig in Resources */,
-				B08386F8B8A8E70339A11F63 /* prodDebug.xcconfig in Resources */,
-				B4F772B75F9BC8107CAB77C1 /* prodProfile.xcconfig in Resources */,
-				5047324FA79C7B543B1C49A1 /* prodRelease.xcconfig in Resources */,
 				600379849B135040B87277FA /* devLaunchScreen.storyboard in Resources */,
 				755D33FA2C694A5AF704B454 /* prodLaunchScreen.storyboard in Resources */,
 			);
