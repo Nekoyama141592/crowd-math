@@ -1,7 +1,7 @@
 import 'package:crowd_math/controller/my_answer_images_controller.dart';
-import 'package:crowd_math/extensions/custom_date_time_formatting.dart';
 import 'package:crowd_math/model/local_image_answer/local_my_ans_page_path.dart';
 import 'package:crowd_math/view/components/basic_page.dart';
+import 'package:crowd_math/view/components/my_image_answer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
@@ -16,6 +16,7 @@ class MyImageAnswersPage extends HookWidget {
       controller.init(myImageAnswers);
       return controller.close;
     }, []);
+    const style = TextStyle(fontSize: 24.0);
     return BasicPage(
         appBar: AppBar(
           title: const Text("自分の回答一覧"),
@@ -27,23 +28,22 @@ class MyImageAnswersPage extends HookWidget {
             if (wrappers.isEmpty) {
               return const Align(
                 alignment: Alignment.center,
-                child: Text("回答はまだありません"),
+                child: Text(
+                  "回答はまだありません",
+                  style: style,
+                ),
               );
             }
             return Column(
               children: [
-                Text(wrappers.first.localImageAnswer.pageTitle),
+                Text(wrappers.first.localImageAnswer.pageTitle, style: style),
                 Expanded(
                   child: ListView(
                     children: wrappers.map((wrapper) {
                       final image = wrapper.image;
                       final answer = wrapper.localImageAnswer;
-                      return Column(
-                        children: [
-                          Image.memory(image),
-                          Text(answer.createdAt.japaneseDateTime()),
-                        ],
-                      );
+                      return MyImaegAnswer(
+                          image: image, answer: answer, style: style);
                     }).toList(),
                   ),
                 )

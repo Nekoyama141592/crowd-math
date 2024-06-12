@@ -10,6 +10,7 @@
 .svn/
 migrate_working_dir/
 lib/gen/
+mobileprovisions/
 *.env
 assets/university/
 assets/center_exams/
