@@ -72,12 +72,12 @@ flutter:
     - assets/images/
     - dev.env
     - prod.env
-    - assets/university/hokudai/
-    - assets/university/kyoto/
-    - assets/university/kyushu/
-    - assets/university/nagoya/
-    - assets/university/osaka/
-    - assets/university/tohoku/
-    - assets/university/toko/
-    - assets/university/tokyo/
+    # - assets/university/hokudai/
+    # - assets/university/kyoto/
+    # - assets/university/kyushu/
+    # - assets/university/nagoya/
+    # - assets/university/osaka/
+    # - assets/university/tohoku/
+    # - assets/university/toko/
+    # - assets/university/tokyo/
     - assets/center_exams/
