@@ -51,13 +51,17 @@ class CenterExamPage extends HookWidget {
                 child: ListView(
                   scrollDirection: Axis.horizontal,
                   children: urls.map((e) {
-                    return CachedNetworkImage(
-                      imageUrl: e,
-                      placeholder: (context, url) => SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.95,
-                          child: const CircularProgressIndicator()),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                    return InteractiveViewer(
+                      minScale: 1,
+                      maxScale: 7,
+                      child: CachedNetworkImage(
+                        imageUrl: e,
+                        placeholder: (context, url) => SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.95,
+                            child: const CircularProgressIndicator()),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
+                      ),
                     );
                   }).toList(),
                 ),
