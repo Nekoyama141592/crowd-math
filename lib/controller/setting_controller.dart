@@ -40,17 +40,6 @@ class SettingController extends GetxController {
     TokensController.to.rxSymbolAnswers([]);
   }
 
-  void onClearButtonPressed() async {
-    ToastCore.cupertinoAlertDialog("全てのキャッシュを削除しますがよろしいですか", _clear);
-  }
-
-  Future<void> _clear() async {
-    Get.back();
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.clear();
-    _onSuccess();
-  }
-
   Future<void> _remove(String key) async {
     Get.back();
     final prefs = await SharedPreferences.getInstance();
@@ -59,7 +48,6 @@ class SettingController extends GetxController {
     }
     await prefs.remove(key);
     _onSuccess();
-    _removeAllTokens();
   }
 
   Future<void> _removeImages(SharedPreferences prefs, String key) async {
@@ -71,13 +59,6 @@ class SettingController extends GetxController {
         await prefs.remove(imageID);
       }
     }
-  }
-
-  void _removeAllTokens() {
-    final controller = TokensController.to;
-    controller.rxBookmarks([]);
-    controller.rxImageAnswers([]);
-    controller.rxSymbolAnswers([]);
   }
 
   void _onSuccess() {

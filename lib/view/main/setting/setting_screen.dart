@@ -25,14 +25,6 @@ class SettingScreen extends StatelessWidget {
           onTap: controller.onRemoveSymbolAnswersButtonPressed,
           title: const Text("採点結果のキャッシュを削除"),
         ),
-        const Divider(),
-        ListTile(
-          onTap: controller.onClearButtonPressed,
-          title: const Text(
-            "全てのキャッシュを削除",
-            style: TextStyle(color: Colors.red),
-          ),
-        ),
       ],
     );
   }
