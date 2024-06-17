@@ -17,6 +17,7 @@ assets/center_exams/
 lib/constants/center_exam/center_exam_paths.dart
 lib/constants/center_exam/center_exam_subject_constant.dart
 lib/constants/center_exam/center_answers.dart
+lib/constants/center_exam/center_exam_images.dart
 # IntelliJ related
 *.iml
 *.ipr

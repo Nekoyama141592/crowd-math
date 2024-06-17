@@ -1,3 +1,4 @@
+import 'package:crowd_math/constants/center_exam/center_exam_images.dart';
 import 'package:crowd_math/constants/enums.dart';
 import 'package:crowd_math/controller/abstract/center_questions_controller.dart';
 import 'package:crowd_math/controller/tokens_controller.dart';
@@ -8,7 +9,6 @@ import 'package:crowd_math/ui_core/toast_core.dart';
 import 'package:crowd_math/view/my_image_answers_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:crowd_math/constants/center_exam/center_answers.dart';
-import 'package:crowd_math/constants/center_exam/center_exam_paths.dart';
 import 'package:crowd_math/constants/center_exam/center_exam_subject_constant.dart';
 import 'package:crowd_math/model/center_answer/center_answer.dart';
 import 'package:crowd_math/model/center_exam/answer_chunk/answer_chunk.dart';
@@ -17,16 +17,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class CenterExamController extends CenterQuestionsController {
   final rxIsGradeMode = false.obs;
-  final rxPaths = <String>[].obs;
+  final rxUrls = <String>[].obs;
   final rxGradedPoint = 0.obs;
   final rxFullPoint = 0.obs;
-  void init(String year, String subject) {
+  void init(String year, String subject) async {
     _setPaths(year, subject);
     _setAnswers(year, subject);
   }
 
   void close() {
-    rxPaths([]);
+    rxUrls([]);
     rxMyAnswerChunks([]);
     rxIsGradeMode(false);
     rxGradedPoint(0);
@@ -38,7 +38,8 @@ class CenterExamController extends CenterQuestionsController {
   bool get showGradedResult => rxIsGradeMode.value;
 
   void _setPaths(String year, String subject) {
-    rxPaths.value = centerExamPaths().where((path) {
+    final results = centerExamImages().where((e) {
+      final path = e["path"] as String;
       final intYear = int.parse(year);
       if (intYear < 2021) {
         return path.contains(year) && path.contains(subject);
@@ -46,6 +47,8 @@ class CenterExamController extends CenterQuestionsController {
         return path.contains(subject);
       }
     }).toList();
+    final urls = results.map((e) => e["url"] as String).toList();
+    rxUrls(urls);
   }
 
   void _setAnswers(String year, String subject) {

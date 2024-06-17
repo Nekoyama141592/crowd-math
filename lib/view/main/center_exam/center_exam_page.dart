@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:crowd_math/controller/center_exam_controller.dart';
 import 'package:crowd_math/core/page_titile_core.dart';
 import 'package:crowd_math/view/components/basic_page.dart';
@@ -44,16 +45,19 @@ class CenterExamPage extends HookWidget {
           ),
           child: TabBarView(children: [
             Obx(() {
-              final paths = controller.rxPaths;
+              final urls = controller.rxUrls;
               return SizedBox(
                 height: MediaQuery.of(context).size.height * 0.5,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: paths.map((e) {
-                    return Container(
-                      width: MediaQuery.of(context).size.width,
-                      padding: const EdgeInsets.all(24.0),
-                      child: Image.asset(e),
+                  children: urls.map((e) {
+                    return CachedNetworkImage(
+                      imageUrl: e,
+                      placeholder: (context, url) => SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.95,
+                          child: const CircularProgressIndicator()),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                     );
                   }).toList(),
                 ),
