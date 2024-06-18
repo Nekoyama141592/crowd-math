@@ -17,6 +17,7 @@ class CenterExamPage extends HookWidget {
     final controller = Get.put(CenterExamController());
     final year = Get.parameters["year"];
     final subject = Get.parameters["subject"];
+    const style = TextStyle(fontSize: 24.0);
     useEffect(() {
       if (year == null || subject == null) return controller.close;
       controller.init(year, subject);
@@ -70,18 +71,21 @@ class CenterExamPage extends HookWidget {
             Column(
               children: [
                 Expanded(child: CenterQuestionElements(controller: controller)),
-                Obx(() {
-                  final isGradedMode = controller.rxIsGradeMode;
-                  if (isGradedMode.value) {
-                    final gradedPoint = controller.rxGradedPoint;
-                    final fullPoint = controller.rxFullPoint;
-                    return Text("得点: ${gradedPoint.value}/${fullPoint.value}");
-                  } else {
-                    return ElevatedButton(
-                        onPressed: controller.onGradeButtonPressed,
-                        child: const Text("採点する"));
-                  }
-                })
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Obx(() {
+                    final isGradedMode = controller.rxIsGradeMode;
+                    if (isGradedMode.value) {
+                      final gradedPoint = controller.rxGradedPoint;
+                      final fullPoint = controller.rxFullPoint;
+                      return Text("得点: ${gradedPoint.value}/${fullPoint.value}",style: style,);
+                    } else {
+                      return ElevatedButton(
+                          onPressed: controller.onGradeButtonPressed,
+                          child: const Text("採点する",style: style,));
+                    }
+                  }),
+                )
               ],
             )
           ])),
