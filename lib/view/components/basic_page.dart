@@ -8,13 +8,10 @@ class BasicPage extends StatelessWidget {
   final Widget child;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Scaffold(
-    appBar: appBar,
-    floatingActionButton: floatingActionButton,
-    body: child,
-          ),
-        );
+    return Scaffold(
+        appBar: appBar,
+        floatingActionButton: floatingActionButton,
+        body: child,
+    );
   }
 }
