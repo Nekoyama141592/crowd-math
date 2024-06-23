@@ -78,11 +78,17 @@ class CenterExamPage extends HookWidget {
                     if (isGradedMode.value) {
                       final gradedPoint = controller.rxGradedPoint;
                       final fullPoint = controller.rxFullPoint;
-                      return Text("得点: ${gradedPoint.value}/${fullPoint.value}",style: style,);
+                      return Text(
+                        "得点: ${gradedPoint.value}/${fullPoint.value}",
+                        style: style,
+                      );
                     } else {
                       return ElevatedButton(
                           onPressed: controller.onGradeButtonPressed,
-                          child: const Text("採点する",style: style,));
+                          child: const Text(
+                            "採点する",
+                            style: style,
+                          ));
                     }
                   }),
                 )

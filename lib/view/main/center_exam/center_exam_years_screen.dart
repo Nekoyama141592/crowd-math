@@ -1,4 +1,5 @@
 import 'package:crowd_math/controller/center_exam_years_controller.dart';
+import 'package:crowd_math/view/components/basic_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,10 +10,8 @@ class CenterExamYearsScreen extends StatelessWidget {
     final controller = Get.put(CenterExamYearsController());
     final yearsList =
         List<int>.generate(2024 - 2015 + 1, (index) => 2024 - index);
-    return SafeArea(
-        child: Scaffold(
-      appBar: AppBar(),
-      body: ListView(
+    return BasicPage(
+      child: ListView(
         children: yearsList.map((year) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
@@ -28,6 +27,6 @@ class CenterExamYearsScreen extends StatelessWidget {
           );
         }).toList(),
       ),
-    ));
+    );
   }
 }

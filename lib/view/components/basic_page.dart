@@ -9,9 +9,9 @@ class BasicPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: appBar,
-        floatingActionButton: floatingActionButton,
-        body: child,
+      appBar: appBar,
+      floatingActionButton: floatingActionButton,
+      body: child,
     );
   }
 }
