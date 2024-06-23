@@ -18,6 +18,7 @@ lib/constants/center_exam/center_exam_paths.dart
 lib/constants/center_exam/center_exam_subject_constant.dart
 lib/constants/center_exam/center_answers.dart
 lib/constants/center_exam/center_exam_images.dart
+lib/constants/center_exam/center_exam_average_score.dart
 # IntelliJ related
 *.iml
 *.ipr

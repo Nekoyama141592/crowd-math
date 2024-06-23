@@ -18,6 +18,7 @@ class CenterExamPage extends HookWidget {
     final year = Get.parameters["year"];
     final subject = Get.parameters["subject"];
     const style = TextStyle(fontSize: 24.0);
+    const miniStyle = TextStyle(fontSize: 20.0);
     useEffect(() {
       if (year == null || subject == null) return controller.close;
       controller.init(year, subject);
@@ -26,75 +27,113 @@ class CenterExamPage extends HookWidget {
     const tabTitles = ["問題と解答", "採点"];
     return DefaultTabController(
       length: tabTitles.length,
-      child: BasicPage(
-          appBar: AppBar(
-            bottom: TabBar(
-                indicatorSize: TabBarIndicatorSize.label,
-                tabs: tabTitles.map((title) => Tab(text: title)).toList()),
-            title: Text(PageTitleCore.pageTitleFromPagePath(Get.currentRoute)),
-            actions: [
-              InkWell(
-                  onTap: () =>
-                      controller.onMenuPressed(context, Get.currentRoute),
-                  child: const Icon(
-                    Icons.menu,
-                  )),
-              const SizedBox(
-                width: 16.0,
-              )
-            ],
-          ),
-          child: TabBarView(children: [
-            Obx(() {
-              final urls = controller.rxUrls;
-              return SizedBox(
-                height: MediaQuery.of(context).size.height * 0.5,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: urls.map((e) {
-                    return InteractiveViewer(
-                      minScale: 1,
-                      maxScale: 7,
-                      child: CachedNetworkImage(
-                        imageUrl: e,
-                        placeholder: (context, url) => SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.95,
-                            child: const CircularProgressIndicator()),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
-                      ),
-                    );
-                  }).toList(),
-                ),
-              );
-            }),
-            Column(
-              children: [
-                Expanded(child: CenterQuestionElements(controller: controller)),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Obx(() {
-                    final isGradedMode = controller.rxIsGradeMode;
-                    if (isGradedMode.value) {
-                      final gradedPoint = controller.rxGradedPoint;
-                      final fullPoint = controller.rxFullPoint;
-                      return Text(
-                        "得点: ${gradedPoint.value}/${fullPoint.value}",
-                        style: style,
-                      );
-                    } else {
-                      return ElevatedButton(
-                          onPressed: controller.onGradeButtonPressed,
-                          child: const Text(
-                            "採点する",
-                            style: style,
-                          ));
-                    }
-                  }),
+      child: SizedBox(
+        child: BasicPage(
+            appBar: AppBar(
+              bottom: TabBar(
+                  indicatorSize: TabBarIndicatorSize.label,
+                  tabs: tabTitles.map((title) => Tab(text: title)).toList()),
+              title:
+                  Text(PageTitleCore.pageTitleFromPagePath(Get.currentRoute)),
+              actions: [
+                InkWell(
+                    onTap: () =>
+                        controller.onMenuPressed(context, Get.currentRoute),
+                    child: const Icon(
+                      Icons.menu,
+                    )),
+                const SizedBox(
+                  width: 16.0,
                 )
               ],
-            )
-          ])),
+            ),
+            child: TabBarView(children: [
+              Obx(() {
+                final urls = controller.rxUrls;
+                return SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  child: ListView(
+                    scrollDirection: Axis.horizontal,
+                    children: urls.map((e) {
+                      return InteractiveViewer(
+                        minScale: 1,
+                        maxScale: 7,
+                        child: CachedNetworkImage(
+                          imageUrl: e,
+                          placeholder: (context, url) => SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.95,
+                              child: const CircularProgressIndicator()),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                );
+              }),
+              Column(
+                children: [
+                  Expanded(
+                      child: CenterQuestionElements(controller: controller)),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Obx(() {
+                      final isGradedMode = controller.rxIsGradeMode;
+                      if (isGradedMode.value) {
+                        final gradedPoint = controller.rxGradedPoint;
+                        final fullPoint = controller.rxFullPoint;
+                        final standardScore = controller.standardScore;
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "得点: ${gradedPoint.value}/${fullPoint.value}",
+                              style: style,
+                            ),
+                            const SizedBox(
+                              width: 20.0,
+                            ),
+                            Text(
+                              "偏差値 $standardScore",
+                              style: style,
+                            ),
+                          ],
+                        );
+                      } else {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Obx(() {
+                              final result =
+                                  controller.rxStatisticsResult.value;
+                              return Column(
+                                children: [
+                                  Text(
+                                    "平均点: ${result.average}",
+                                    style: miniStyle,
+                                  ),
+                                  Text(
+                                    "標準偏差: ${result.standardDeviation}",
+                                    style: miniStyle,
+                                  )
+                                ],
+                              );
+                            }),
+                            ElevatedButton(
+                                onPressed: controller.onGradeButtonPressed,
+                                child: const Text(
+                                  "採点する",
+                                  style: style,
+                                )),
+                          ],
+                        );
+                      }
+                    }),
+                  )
+                ],
+              )
+            ])),
+      ),
     );
   }
 }

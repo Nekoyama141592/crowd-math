@@ -1,9 +1,12 @@
+import 'dart:math';
+import 'package:crowd_math/constants/center_exam/center_exam_average_score.dart';
 import 'package:crowd_math/constants/center_exam/center_exam_images.dart';
 import 'package:crowd_math/constants/enums.dart';
 import 'package:crowd_math/controller/abstract/center_questions_controller.dart';
 import 'package:crowd_math/controller/tokens_controller.dart';
 import 'package:crowd_math/core/id_core.dart';
 import 'package:crowd_math/extensions/shared_preferences_extension.dart';
+import 'package:crowd_math/model/center_statistic_result/center_statistic_result.dart';
 import 'package:crowd_math/model/local_symbol_answer/local_symbol_answer.dart';
 import 'package:crowd_math/ui_core/toast_core.dart';
 import 'package:crowd_math/view/my_image_answers_page.dart';
@@ -20,9 +23,11 @@ class CenterExamController extends CenterQuestionsController {
   final rxUrls = <String>[].obs;
   final rxGradedPoint = 0.obs;
   final rxFullPoint = 0.obs;
+  final rxStatisticsResult = Rx(const CenterStatisticResult());
   void init(String year, String subject) async {
     _setPaths(year, subject);
     _setAnswers(year, subject);
+    _setAverageScore(year, subject);
   }
 
   void close() {
@@ -78,6 +83,16 @@ class CenterExamController extends CenterQuestionsController {
       rxMyAnswerChunks.add(result);
       startIndex += correctAnswers.length;
     }
+  }
+
+  void _setAverageScore(String year, String subject) {
+    final intYear = int.parse(year);
+    final dataList = centerAverageScore()[intYear];
+    if (dataList == null) return;
+    final result =
+        dataList.firstWhere((element) => element["subject"] == subject);
+    final typedResult = CenterStatisticResult.fromJson(result);
+    rxStatisticsResult(typedResult);
   }
 
   @override
@@ -164,5 +179,16 @@ class CenterExamController extends CenterQuestionsController {
     await prefs.setJsonList(key, jsonList);
     TokensController.to.rxSymbolAnswers.add(myAns);
     ToastCore.showFlutterToast("採点結果を保存しました", timeInSecForIosWeb: 1);
+  }
+
+  double get standardScore {
+    final result = rxStatisticsResult.value;
+    final average = result.average; // 平均点
+    final standardDeviation = result.standardDeviation; // 標準偏差
+    final gradedPoint = rxGradedPoint.value; // 得点
+    final beforeRound =
+        ((gradedPoint - average) / standardDeviation * 10) + 50; // 偏差値
+    final fac = pow(10.0, 1);
+    return (beforeRound * fac).floor() / fac; // 少数第一位で丸める
   }
 }
