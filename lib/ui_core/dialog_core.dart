@@ -32,6 +32,10 @@ class DialogCore {
             const SizedBox(
               height: 16.0,
             ),
+            const Text("スクショを撮ってSNSでみんなに結果を共有してみよう!!"),
+            const SizedBox(
+              height: 16.0,
+            ),
             RoundedButton(
               text: "結果を保存する",
               press: CenterExamController.to.onSaveScoreButtonPressed,
