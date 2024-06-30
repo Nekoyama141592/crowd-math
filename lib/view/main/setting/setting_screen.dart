@@ -12,18 +12,18 @@ class SettingScreen extends StatelessWidget {
         ListTile(
           onTap: controller.onRemoveBookmarksButtonPressed,
           title: const Text(
-            "ブックマークのキャッシュを削除",
+            "ブックマークの履歴を削除",
           ),
         ),
         const Divider(),
         ListTile(
           onTap: controller.onRemoveImageAnswersButtonPressed,
-          title: const Text("画像答案のキャッシュを削除"),
+          title: const Text("画像答案の履歴を削除"),
         ),
         const Divider(),
         ListTile(
           onTap: controller.onRemoveSymbolAnswersButtonPressed,
-          title: const Text("採点結果のキャッシュを削除"),
+          title: const Text("採点結果の履歴を削除"),
         ),
       ],
     );

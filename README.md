@@ -33,7 +33,7 @@ Play Console -> アプリ -> 設定 -> アプリの署名 -> アプリ署名鍵�
 ## イラスト素材
 https://storyset.com/
 
-## Xcodeキャッシュ削除
+## Xcode履歴削除
 rm -rf ~/Library/Developer/Xcode/DerivedData
 rm -rf ~/Library/Caches/com.apple.dt.Xcode
 rm -rf ~/Library/Developer/Xcode/UserData/Previews

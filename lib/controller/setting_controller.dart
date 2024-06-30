@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SettingController extends GetxController {
   void onRemoveBookmarksButtonPressed() async {
     ToastCore.cupertinoAlertDialog(
-        "ブックマークのキャッシュを削除しますがよろしいですか", _removeBookmarks);
+        "ブックマークの履歴を削除しますがよろしいですか", _removeBookmarks);
   }
 
   Future<void> _removeBookmarks() async {
@@ -20,7 +20,7 @@ class SettingController extends GetxController {
 
   void onRemoveImageAnswersButtonPressed() async {
     ToastCore.cupertinoAlertDialog(
-        "画像答案のキャッシュを削除しますがよろしいですか", _removeImageAnswers);
+        "画像答案の履歴を削除しますがよろしいですか", _removeImageAnswers);
   }
 
   Future<void> _removeImageAnswers() async {
@@ -31,7 +31,7 @@ class SettingController extends GetxController {
 
   void onRemoveSymbolAnswersButtonPressed() async {
     ToastCore.cupertinoAlertDialog(
-        "採点結果のキャッシュを削除しますがよろしいですか", _removeSymbolAnswers);
+        "採点結果の履歴を削除しますがよろしいですか", _removeSymbolAnswers);
   }
 
   Future<void> _removeSymbolAnswers() async {
@@ -62,6 +62,6 @@ class SettingController extends GetxController {
   }
 
   void _onSuccess() {
-    ToastCore.showFlutterToast("キャッシュの削除に成功しました！");
+    ToastCore.showFlutterToast("履歴の削除に成功しました！");
   }
 }
