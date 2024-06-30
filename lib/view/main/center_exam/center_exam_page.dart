@@ -3,6 +3,7 @@ import 'package:crowd_math/controller/center_exam_controller.dart';
 import 'package:crowd_math/core/page_titile_core.dart';
 import 'package:crowd_math/view/components/basic_page.dart';
 import 'package:crowd_math/view/components/center_question_elements.dart';
+import 'package:crowd_math/view/components/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
@@ -24,30 +25,24 @@ class CenterExamPage extends HookWidget {
       controller.init(year, subject);
       return controller.close;
     }, []);
-    const tabTitles = ["問題と解答", "採点"];
-    return DefaultTabController(
-      length: tabTitles.length,
-      child: SizedBox(
-        child: BasicPage(
-            appBar: AppBar(
-              bottom: TabBar(
-                  indicatorSize: TabBarIndicatorSize.label,
-                  tabs: tabTitles.map((title) => Tab(text: title)).toList()),
-              title:
-                  Text(PageTitleCore.pageTitleFromPagePath(Get.currentRoute)),
-              actions: [
-                InkWell(
-                    onTap: () =>
-                        controller.onMenuPressed(context, Get.currentRoute),
-                    child: const Icon(
-                      Icons.menu,
-                    )),
-                const SizedBox(
-                  width: 16.0,
-                )
-              ],
-            ),
-            child: TabBarView(children: [
+    return SizedBox(
+      child: BasicPage(
+          appBar: AppBar(
+            title: Text(PageTitleCore.pageTitleFromPagePath(Get.currentRoute)),
+            actions: [
+              InkWell(
+                  onTap: () =>
+                      controller.onMenuPressed(context, Get.currentRoute),
+                  child: const Icon(
+                    Icons.menu,
+                  )),
+              const SizedBox(
+                width: 16.0,
+              )
+            ],
+          ),
+          child: SingleChildScrollView(
+            child: Column(children: [
               Obx(() {
                 final urls = controller.rxUrls;
                 return SizedBox(
@@ -61,15 +56,15 @@ class CenterExamPage extends HookWidget {
                         child: CachedNetworkImage(
                           imageUrl: e,
                           placeholder: (context, url) => SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.95,
-                              child: const SizedBox(
-                                height: 60.0,
-                                width: 60.0,
-                                child: Align(
-                                  child: CircularProgressIndicator(),
-                                ),
-                              )
-                            ,),
+                            width: MediaQuery.of(context).size.width * 0.95,
+                            child: const SizedBox(
+                              height: 60.0,
+                              width: 60.0,
+                              child: Align(
+                                child: CircularProgressIndicator(),
+                              ),
+                            ),
+                          ),
                           errorWidget: (context, url, error) =>
                               const Icon(Icons.error),
                         ),
@@ -80,7 +75,8 @@ class CenterExamPage extends HookWidget {
               }),
               Column(
                 children: [
-                  Expanded(
+                  SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.3,
                       child: CenterQuestionElements(controller: controller)),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -126,12 +122,11 @@ class CenterExamPage extends HookWidget {
                                 ],
                               );
                             }),
-                            ElevatedButton(
-                                onPressed: controller.onGradeButtonPressed,
-                                child: const Text(
-                                  "採点する",
-                                  style: style,
-                                )),
+                            RoundedButton(
+                              text: "採点する",
+                              widthRate: 0.3,
+                              press: controller.onGradeButtonPressed,
+                            )
                           ],
                         );
                       }
@@ -139,8 +134,8 @@ class CenterExamPage extends HookWidget {
                   )
                 ],
               )
-            ])),
-      ),
+            ]),
+          )),
     );
   }
 }

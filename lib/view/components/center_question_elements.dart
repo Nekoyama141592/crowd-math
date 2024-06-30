@@ -37,6 +37,7 @@ class CenterQuestionElements extends StatelessWidget {
                         final j = myAnswers.indexOf(myAnswer);
                         List<int> numbers = List.generate(9, (k) => k + 1);
                         return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: numbers.map((number) {
                             return InkWell(
                                 onTap: () =>
