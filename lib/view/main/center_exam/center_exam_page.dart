@@ -122,6 +122,7 @@ class CenterExamPage extends HookWidget {
                                 ],
                               );
                             }),
+                            const SizedBox(width: 20.0,),
                             RoundedButton(
                               text: "採点する",
                               widthRate: 0.3,
