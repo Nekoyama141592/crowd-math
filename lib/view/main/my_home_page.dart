@@ -12,7 +12,7 @@ class MyHomePage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pageIndex = useState(0);
+    final pageIndex = useState(1);
     final PageController pageController = usePageController();
     Get.put(TokensController());
     return Scaffold(
