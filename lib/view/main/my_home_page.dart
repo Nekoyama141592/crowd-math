@@ -12,7 +12,7 @@ class MyHomePage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pageIndex = useState(1);
+    final pageIndex = useState(0);
     final PageController pageController = usePageController();
     Get.put(TokensController());
     return Scaffold(
@@ -29,8 +29,8 @@ class MyHomePage extends HookWidget {
           onPageChanged: (index) => pageIndex.value = index,
           controller: pageController,
           children: const [
-            HomeScreen(),
             CenterExamYearsScreen(),
+            HomeScreen(),
             SettingScreen(), // UniversityScreen
           ],
         ));
