@@ -62,7 +62,14 @@ class CenterExamPage extends HookWidget {
                           imageUrl: e,
                           placeholder: (context, url) => SizedBox(
                               width: MediaQuery.of(context).size.width * 0.95,
-                              child: const CircularProgressIndicator()),
+                              child: const SizedBox(
+                                height: 60.0,
+                                width: 60.0,
+                                child: Align(
+                                  child: CircularProgressIndicator(),
+                                ),
+                              )
+                            ,),
                           errorWidget: (context, url, error) =>
                               const Icon(Icons.error),
                         ),
