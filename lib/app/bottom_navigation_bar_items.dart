@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 final List<BottomNavigationBarItem> bnbItems = [
   const BottomNavigationBarItem(
-      label: 'センター/共テ',
+      label: '共テ/センター',
       icon: Icon(
         Icons.question_mark,
       )),
