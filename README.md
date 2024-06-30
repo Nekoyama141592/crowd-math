@@ -18,7 +18,9 @@ flutter build appbundle --flavor dev -t lib/main_dev.dart --no-tree-shake-icons
 flutter build appbundle --flavor prod -t lib/main_prod.dart --no-tree-shake-icons
 
 ## フォーマット
+dart format --set-exit-if-changed .
 
+flutter analyze .
 ## 自動生成
 flutter pub run build_runner build --delete-conflicting-outputs
 ## 一括アップデート

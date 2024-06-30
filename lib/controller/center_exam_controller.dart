@@ -5,9 +5,11 @@ import 'package:crowd_math/constants/enums.dart';
 import 'package:crowd_math/controller/abstract/center_questions_controller.dart';
 import 'package:crowd_math/controller/tokens_controller.dart';
 import 'package:crowd_math/core/id_core.dart';
+import 'package:crowd_math/core/page_titile_core.dart';
 import 'package:crowd_math/extensions/shared_preferences_extension.dart';
 import 'package:crowd_math/model/center_statistic_result/center_statistic_result.dart';
 import 'package:crowd_math/model/local_symbol_answer/local_symbol_answer.dart';
+import 'package:crowd_math/ui_core/dialog_core.dart';
 import 'package:crowd_math/ui_core/toast_core.dart';
 import 'package:crowd_math/view/my_image_answers_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,6 +21,7 @@ import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CenterExamController extends CenterQuestionsController {
+  static CenterExamController get to => Get.find<CenterExamController>();
   final rxIsGradeMode = false.obs;
   final rxUrls = <String>[].obs;
   final rxGradedPoint = 0.obs;
@@ -103,7 +106,7 @@ class CenterExamController extends CenterQuestionsController {
     rxMyAnswerChunks[i] = rxMyAnswerChunks[i].copyWith(myAnswers: answers);
   }
 
-  void onGradeButtonPressed() {
+  void onGradeButtonPressed(BuildContext context) {
     if (rxIsGradeMode.value) return;
     rxIsGradeMode(true);
     int gradedPoint = 0;
@@ -117,7 +120,12 @@ class CenterExamController extends CenterQuestionsController {
     }
     rxGradedPoint(gradedPoint);
     rxFullPoint(fullPoint);
-    _saveSymbolImageAns();
+    final text = PageTitleCore.pageTitleFromPagePath(Get.currentRoute);
+    DialogCore.showGradedDialog(
+        context: context,
+        text: text,
+        score: gradedPoint,
+        standardScore: standardScore);
   }
 
   void onDescriptionButtonPressed(BuildContext context) {
@@ -159,6 +167,11 @@ class CenterExamController extends CenterQuestionsController {
             ],
           );
         });
+  }
+
+  void onSaveScoreButtonPressed() {
+    _saveSymbolImageAns();
+    Get.back();
   }
 
   Future<void> _saveSymbolImageAns() async {

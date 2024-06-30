@@ -125,7 +125,8 @@ class CenterExamPage extends HookWidget {
                             RoundedButton(
                               text: "採点する",
                               widthRate: 0.3,
-                              press: controller.onGradeButtonPressed,
+                              press: () =>
+                                  controller.onGradeButtonPressed(context),
                             )
                           ],
                         );
