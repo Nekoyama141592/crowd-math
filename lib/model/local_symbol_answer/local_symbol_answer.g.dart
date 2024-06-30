@@ -16,6 +16,7 @@ _$LocalSymbolAnswerImpl _$$LocalSymbolAnswerImplFromJson(
       answerChunks: (json['answerChunks'] as List<dynamic>)
           .map((e) => e as Map<String, dynamic>)
           .toList(),
+      standardScore: (json['standardScore'] as num?)?.toDouble() ?? 0.0,
     );
 
 Map<String, dynamic> _$$LocalSymbolAnswerImplToJson(
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$LocalSymbolAnswerImplToJson(
       'memo': instance.memo,
       'pagePath': instance.pagePath,
       'answerChunks': instance.answerChunks,
+      'standardScore': instance.standardScore,
     };

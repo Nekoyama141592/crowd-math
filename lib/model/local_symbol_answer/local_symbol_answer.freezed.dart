@@ -26,6 +26,7 @@ mixin _$LocalSymbolAnswer {
   String get pagePath => throw _privateConstructorUsedError;
   List<Map<String, dynamic>> get answerChunks =>
       throw _privateConstructorUsedError;
+  double get standardScore => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +45,8 @@ abstract class $LocalSymbolAnswerCopyWith<$Res> {
       DateTime createdAt,
       String memo,
       String pagePath,
-      List<Map<String, dynamic>> answerChunks});
+      List<Map<String, dynamic>> answerChunks,
+      double standardScore});
 }
 
 /// @nodoc
@@ -65,6 +67,7 @@ class _$LocalSymbolAnswerCopyWithImpl<$Res, $Val extends LocalSymbolAnswer>
     Object? memo = null,
     Object? pagePath = null,
     Object? answerChunks = null,
+    Object? standardScore = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -87,6 +90,10 @@ class _$LocalSymbolAnswerCopyWithImpl<$Res, $Val extends LocalSymbolAnswer>
           ? _value.answerChunks
           : answerChunks // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>,
+      standardScore: null == standardScore
+          ? _value.standardScore
+          : standardScore // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -104,7 +111,8 @@ abstract class _$$LocalSymbolAnswerImplCopyWith<$Res>
       DateTime createdAt,
       String memo,
       String pagePath,
-      List<Map<String, dynamic>> answerChunks});
+      List<Map<String, dynamic>> answerChunks,
+      double standardScore});
 }
 
 /// @nodoc
@@ -123,6 +131,7 @@ class __$$LocalSymbolAnswerImplCopyWithImpl<$Res>
     Object? memo = null,
     Object? pagePath = null,
     Object? answerChunks = null,
+    Object? standardScore = null,
   }) {
     return _then(_$LocalSymbolAnswerImpl(
       id: null == id
@@ -145,6 +154,10 @@ class __$$LocalSymbolAnswerImplCopyWithImpl<$Res>
           ? _value._answerChunks
           : answerChunks // ignore: cast_nullable_to_non_nullable
               as List<Map<String, dynamic>>,
+      standardScore: null == standardScore
+          ? _value.standardScore
+          : standardScore // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -157,7 +170,8 @@ class _$LocalSymbolAnswerImpl extends _LocalSymbolAnswer {
       required this.createdAt,
       this.memo = "",
       required this.pagePath,
-      required final List<Map<String, dynamic>> answerChunks})
+      required final List<Map<String, dynamic>> answerChunks,
+      this.standardScore = 0.0})
       : _answerChunks = answerChunks,
         super._();
 
@@ -182,8 +196,12 @@ class _$LocalSymbolAnswerImpl extends _LocalSymbolAnswer {
   }
 
   @override
+  @JsonKey()
+  final double standardScore;
+
+  @override
   String toString() {
-    return 'LocalSymbolAnswer(id: $id, createdAt: $createdAt, memo: $memo, pagePath: $pagePath, answerChunks: $answerChunks)';
+    return 'LocalSymbolAnswer(id: $id, createdAt: $createdAt, memo: $memo, pagePath: $pagePath, answerChunks: $answerChunks, standardScore: $standardScore)';
   }
 
   @override
@@ -198,13 +216,15 @@ class _$LocalSymbolAnswerImpl extends _LocalSymbolAnswer {
             (identical(other.pagePath, pagePath) ||
                 other.pagePath == pagePath) &&
             const DeepCollectionEquality()
-                .equals(other._answerChunks, _answerChunks));
+                .equals(other._answerChunks, _answerChunks) &&
+            (identical(other.standardScore, standardScore) ||
+                other.standardScore == standardScore));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, createdAt, memo, pagePath,
-      const DeepCollectionEquality().hash(_answerChunks));
+      const DeepCollectionEquality().hash(_answerChunks), standardScore);
 
   @JsonKey(ignore: true)
   @override
@@ -223,12 +243,12 @@ class _$LocalSymbolAnswerImpl extends _LocalSymbolAnswer {
 
 abstract class _LocalSymbolAnswer extends LocalSymbolAnswer {
   const factory _LocalSymbolAnswer(
-          {required final String id,
-          required final DateTime createdAt,
-          final String memo,
-          required final String pagePath,
-          required final List<Map<String, dynamic>> answerChunks}) =
-      _$LocalSymbolAnswerImpl;
+      {required final String id,
+      required final DateTime createdAt,
+      final String memo,
+      required final String pagePath,
+      required final List<Map<String, dynamic>> answerChunks,
+      final double standardScore}) = _$LocalSymbolAnswerImpl;
   const _LocalSymbolAnswer._() : super._();
 
   factory _LocalSymbolAnswer.fromJson(Map<String, dynamic> json) =
@@ -244,6 +264,8 @@ abstract class _LocalSymbolAnswer extends LocalSymbolAnswer {
   String get pagePath;
   @override
   List<Map<String, dynamic>> get answerChunks;
+  @override
+  double get standardScore;
   @override
   @JsonKey(ignore: true)
   _$$LocalSymbolAnswerImplCopyWith<_$LocalSymbolAnswerImpl> get copyWith =>

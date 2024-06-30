@@ -8,8 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingController extends GetxController {
   void onRemoveBookmarksButtonPressed() async {
-    ToastCore.cupertinoAlertDialog(
-        "ブックマークの履歴を削除しますがよろしいですか", _removeBookmarks);
+    ToastCore.cupertinoAlertDialog("ブックマークの履歴を削除しますがよろしいですか", _removeBookmarks);
   }
 
   Future<void> _removeBookmarks() async {

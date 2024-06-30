@@ -186,7 +186,8 @@ class CenterExamController extends CenterQuestionsController {
         id: id,
         createdAt: DateTime.now(),
         pagePath: pagePath,
-        answerChunks: answerChunks);
+        answerChunks: answerChunks,
+        standardScore: standardScore);
     final jsonData = myAns.toJson();
     jsonList.add(jsonData);
     await prefs.setJsonList(key, jsonList);

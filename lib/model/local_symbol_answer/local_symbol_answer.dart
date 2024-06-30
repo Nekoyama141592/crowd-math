@@ -14,6 +14,7 @@ abstract class LocalSymbolAnswer implements _$LocalSymbolAnswer {
     @Default("") String memo,
     required String pagePath,
     required List<Map<String, dynamic>> answerChunks,
+    @Default(0.0) double standardScore,
   }) = _LocalSymbolAnswer;
   factory LocalSymbolAnswer.fromJson(Map<String, dynamic> json) =>
       _$LocalSymbolAnswerFromJson(json);

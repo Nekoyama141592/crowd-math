@@ -4,6 +4,7 @@ import 'package:crowd_math/model/center_exam/answer_chunk/answer_chunk.dart';
 import 'package:crowd_math/model/local_symbol_answer/local_symbol_answer.dart';
 import 'package:crowd_math/view/components/basic_page.dart';
 import 'package:crowd_math/view/components/center_question_elements.dart';
+import 'package:crowd_math/view/components/rounded_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:get/get.dart';
@@ -13,6 +14,7 @@ class SymbolAnswerPage extends HookWidget {
   final LocalSymbolAnswer localSymbolAnswer;
   @override
   Widget build(BuildContext context) {
+    const style = TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500);
     final controller = Get.put(SymbolAnswerController());
     useEffect(() {
       final answerChunks = localSymbolAnswer.answerChunks
@@ -27,14 +29,29 @@ class SymbolAnswerPage extends HookWidget {
         ),
         child: Column(
           children: [
-            Text(
-                "${localSymbolAnswer.gradedPoint()}/${localSymbolAnswer.fullPoint()} 日時:${localSymbolAnswer.createdAt.japaneseDateTime()}"),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "得点: ${localSymbolAnswer.gradedPoint()}/${localSymbolAnswer.fullPoint()}",
+                    style: style,
+                  ),
+                  Text("偏差値: ${localSymbolAnswer.standardScore}", style: style),
+                ],
+              ),
+            ),
+            Text("日時:${localSymbolAnswer.createdAt.japaneseDateTime()}",
+                style: style),
             Expanded(child: CenterQuestionElements(controller: controller)),
-            ElevatedButton(
-                onPressed: () {
-                  Get.toNamed(localSymbolAnswer.pagePath);
-                },
-                child: const Text("問題へ"))
+            RoundedButton(
+              text: "問題へ",
+              press: () {
+                Get.toNamed(localSymbolAnswer.pagePath);
+              },
+              widthRate: 0.4,
+            )
           ],
         ));
   }
