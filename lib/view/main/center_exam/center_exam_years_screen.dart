@@ -13,6 +13,7 @@ class CenterExamYearsScreen extends StatelessWidget {
     return BasicPage(
       child: ListView(
         children: yearsList.map((year) {
+          final trailing = year < 2021 ? "センター試験" : "共通テスト";
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: Container(
@@ -21,7 +22,7 @@ class CenterExamYearsScreen extends StatelessWidget {
                   borderRadius: const BorderRadius.all(Radius.circular(8.0)),
                   border: Border.all()),
               child: ListTile(
-                  title: Text("$year年"),
+                  title: Text("$year年 $trailing"),
                   onTap: () => controller.onYearButtonTapped(year)),
             ),
           );
