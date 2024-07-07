@@ -3,6 +3,7 @@ import 'package:crowd_math/extensions/custom_date_time_formatting.dart';
 import 'package:crowd_math/view/my_image_answer_page.dart';
 import 'package:crowd_math/view/symbol_answer_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,11 +19,18 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              const Text(
-                "ブックマーク",
-                style: h2Style,
+             const Row(
+                children: [
+                  Icon(Icons.bookmark),
+                  SizedBox(width: 16.0,),
+                  Text(
+                    "ブックマーク",
+                    style: h2Style,
+                  ),
+                ],
               ),
-              SizedBox(
+              Container(
+                decoration: BoxDecoration(border: Border.all(),borderRadius: const BorderRadius.all(Radius.circular(16.0))),
                 height: MediaQuery.of(context).size.height * 0.25,
                 child: Obx(() {
                   final bookmarks = controller.rxBookmarks;
@@ -35,24 +43,40 @@ class HomeScreen extends StatelessWidget {
                   }
                   return ListView(
                     children: bookmarks
-                        .map((bookmark) => ListTile(
-                              title: Text(bookmark.pageTitle),
-                              subtitle:
-                                  Text(bookmark.createdAt.japaneseDateTime()),
-                              onTap: () => Get.toNamed(bookmark.pagePath),
-                              trailing: InkWell(
-                                onTap: () =>
-                                    controller.onUnBookmarkButtonPressed(
-                                        bookmark.pagePath),
-                                child: const Icon(Icons.delete),
-                              ),
-                            ))
+                        .map((bookmark) => Column(
+                          children: [
+                            ListTile(
+                                  title: Text(bookmark.pageTitle),
+                                  subtitle:
+                                      Text(bookmark.createdAt.japaneseDateTime()),
+                                  onTap: () => Get.toNamed(bookmark.pagePath),
+                                  trailing: InkWell(
+                                    onTap: () =>
+                                        controller.onUnBookmarkButtonPressed(
+                                            bookmark.pagePath),
+                                    child: const Icon(Icons.delete),
+                                  ),
+                                ),
+                                const Divider()
+                          ],
+                        ))
                         .toList(),
                   );
                 }),
               ),
-              const Text("自分の回答", style: h2Style),
-              SizedBox(
+              
+              const Row(
+                children: [
+                  Icon(Icons.image),
+                  SizedBox(width: 16.0,),
+                  Text(
+                    "自分の回答写真",
+                    style: h2Style,
+                  ),
+                ],
+              ),
+              Container(
+                decoration: BoxDecoration(border: Border.all(),borderRadius: const BorderRadius.all(Radius.circular(16.0))),
                 height: MediaQuery.of(context).size.height * 0.25,
                 child: Obx(() {
                   final myAnswers = controller.rxImageAnswers;
@@ -67,25 +91,41 @@ class HomeScreen extends StatelessWidget {
                   }
                   return ListView(
                     children: myAnswers
-                        .map((myAnswer) => ListTile(
-                              title: Text(myAnswer.pageTitle),
-                              subtitle:
-                                  Text(myAnswer.createdAt.japaneseDateTime()),
-                              onTap: () => Get.to(MyImageAnswerPage(
-                                  localImageAnswer: myAnswer)),
-                              trailing: InkWell(
-                                onTap: () =>
-                                    controller.onRemoveImageButtonPressed(
-                                        myAnswer.imageID),
-                                child: const Icon(Icons.delete),
-                              ),
-                            ))
+                        .map((myAnswer) => Column(
+                          children: [
+                            ListTile(
+                                  title: Text(myAnswer.pageTitle),
+                                  subtitle:
+                                      Text(myAnswer.createdAt.japaneseDateTime()),
+                                  onTap: () => Get.to(MyImageAnswerPage(
+                                      localImageAnswer: myAnswer)),
+                                  trailing: InkWell(
+                                    onTap: () =>
+                                        controller.onRemoveImageButtonPressed(
+                                            myAnswer.imageID),
+                                    child: const Icon(Icons.delete),
+                                  ),
+                                ),
+                              const Divider()
+                          ],
+                        ))
                         .toList(),
                   );
                 }),
               ),
-              const Text("採点結果", style: h2Style),
-              SizedBox(
+              
+              const Row(
+                children: [
+                  Icon(Icons.check),
+                  SizedBox(width: 16.0,),
+                  Text(
+                    "採点結果",
+                    style: h2Style,
+                  ),
+                ],
+              ),
+              Container(
+                decoration: BoxDecoration(border: Border.all(),borderRadius: const BorderRadius.all(Radius.circular(16.0))),
                 height: MediaQuery.of(context).size.height * 0.25,
                 child: Obx(() {
                   final myAnswers = controller.rxSymbolAnswers;
@@ -97,20 +137,25 @@ class HomeScreen extends StatelessWidget {
                   }
                   return ListView(
                     children: myAnswers
-                        .map((myAnswer) => ListTile(
-                              title: Text(
-                                  "${myAnswer.pageTitle}: ${myAnswer.gradedPoint()}/${myAnswer.fullPoint()}"),
-                              subtitle:
-                                  Text(myAnswer.createdAt.japaneseDateTime()),
-                              onTap: () => Get.to(SymbolAnswerPage(
-                                  localSymbolAnswer: myAnswer)),
-                              trailing: InkWell(
-                                onTap: () => controller
-                                    .onRemoveSymbolAnswerButtonPressed(
-                                        myAnswer.id),
-                                child: const Icon(Icons.delete),
-                              ),
-                            ))
+                        .map((myAnswer) => Column(
+                          children: [
+                            ListTile(
+                                  title: Text(
+                                      "${myAnswer.pageTitle}: ${myAnswer.gradedPoint()}/${myAnswer.fullPoint()}"),
+                                  subtitle:
+                                      Text(myAnswer.createdAt.japaneseDateTime()),
+                                  onTap: () => Get.to(SymbolAnswerPage(
+                                      localSymbolAnswer: myAnswer)),
+                                  trailing: InkWell(
+                                    onTap: () => controller
+                                        .onRemoveSymbolAnswerButtonPressed(
+                                            myAnswer.id),
+                                    child: const Icon(Icons.delete),
+                                  ),
+                                ),
+                                const Divider()
+                          ],
+                        ))
                         .toList(),
                   );
                 }),
